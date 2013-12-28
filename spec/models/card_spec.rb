@@ -7,4 +7,5 @@ describe Card do
 
   it { should have_many(:tags).through(:taggings) }
   it { should have_many(:taggings).dependent(:destroy) }
+  it { should belong_to :user }
 end

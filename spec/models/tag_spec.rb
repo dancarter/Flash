@@ -6,4 +6,5 @@ describe Tag do
 
   it { should have_many(:taggings).dependent(:destroy) }
   it { should have_many(:cards).through(:taggings) }
+  it { should belong_to :user }
 end

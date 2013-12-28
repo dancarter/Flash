@@ -6,4 +6,7 @@ describe User do
 
   it { should_not have_valid(:email).when("hithere","hi@there","hithere.com") }
   it { should have_valid(:email).when("hi@there.com","yolo@gmail.com") }
+
+  it { should have_many(:cards).dependent(:destroy) }
+  it { should have_many(:tags).dependent(:destroy) }
 end
