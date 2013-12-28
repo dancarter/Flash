@@ -1,4 +1,8 @@
 class Card < ActiveRecord::Base
+  has_many :taggings,
+    inverse_of: :card,
+    dependent: :destroy
+
   validates_presence_of :front
   validates_presence_of :back
   validates_presence_of :user_id
