@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'devise'
+
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
