@@ -40,6 +40,7 @@ group :test, :development do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'valid_attribute'
+  gem 'validates_email_format_of'
   gem 'pry-rails'
   gem 'dotenv-rails'
 end
