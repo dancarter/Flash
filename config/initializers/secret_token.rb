@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Flash::Application.config.secret_key_base = '60b6ce34739a770b9311bf9538fab789ce1f4c156df36b32e529be82b252767a711bd18c3764c86298ba82cd8accbd8dbee49d141148eef2d92e8a942d3c04aa'
+Flash::Application.config.secret_key_base = ENV['SECRET_KEY']
