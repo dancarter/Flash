@@ -5,4 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :username
+
+  has_many :cards,
+    inverse_of: :user,
+    dependent: :destroy
+  has_many :tags,
+    inverse_of: :user,
+    dependent: :destroy
 end

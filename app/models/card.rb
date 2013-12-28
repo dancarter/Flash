@@ -5,6 +5,8 @@ class Card < ActiveRecord::Base
   has_many :tags,
     through: :taggings,
     inverse_of: :cards
+  belongs_to :user,
+    inverse_of: :cards
 
   validates_presence_of :front
   validates_presence_of :back
