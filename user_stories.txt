@@ -1,0 +1,118 @@
+1.)
+    As a new user
+    I want to create an account
+    So that I can make flashcards
+
+    Acceptance Criteria:
+    * I want to create an account
+    * I must supply a username, email address, password, and password
+      confirmation
+    * If my password and password confirmation do not match, I have
+      to re-enter them
+    * If I enter all my details, I receive a confirmation email
+    * If I confirm my email, my account is successfully created
+
+2.)
+    As a registered user
+    I want to log in
+    So that I can use the app
+
+    Acceptance Criteria:
+    * I must supply my username and password
+    * If my username or password are incorrect, I must re-enter them
+    * If my username and password are correct I am logged into the site
+
+3.)
+    As a registered user
+    I want to create a new card
+    So that I can study it later
+
+    Acceptance Criteria:
+    * I want to create a new card
+    * I must supply text for the front and back of the card
+    * If I do not supply a front and back, I get an error
+    * I can optionally supply one or more tags for the card
+
+4.)
+    As a registered user
+    I want to create a new tag
+    So that I can tag cards
+
+    Acceptance Criteria:
+    * I want to create a new tag
+    * I must supply a name for the tag
+    * If I do not supply a name, I get an error
+    * I can optionally supply one or more tags for the card
+
+5.)
+    As a registered user
+    I want to edit a card
+    So that I can update it
+
+    Acceptance Criteria:
+    * I want to select a card from existing cards
+    * The current front and back texts and asociated tags are
+      displayed
+    * I can change the front and back text of the card
+    * I can add new tags to the card
+    * I can remove current tags from the card
+
+6.)
+    As a registered user
+    I want to edit a tag
+    So that I can update it
+
+    Acceptance Criteria:
+    * I want to select a tag from existing tags
+    * The current name of the tag is displayed
+    * I can change the name of the tag
+
+7.)
+    As a registered user
+    I want to delete a card
+    So that I can remove unwanted cards
+
+    Acceptance Criteria:
+    * I want to select a card from existing cards
+    * I can choose to delete the card
+    * I am asked to confirm the deletion
+    * If I select yes the card is deleted
+    * If I select no nothing is changed
+
+8.)
+    As a registered user
+    I want to delete a tag
+    So that I can remove unwanted tags
+
+    Acceptance Criteria:
+    * I want to select a tag from existing tags
+    * I can choose to delete the tag
+    * I am asked to confirm the deletion
+    * If I select yes the tag is deleted and removed from
+      any cards with that tag, but the cards are not deleted
+    * If I select no nothing is changed
+
+9.)
+    As a registered user
+    I want to select tags to review
+    So that I can study cards
+
+    Acceptance Criteria:
+    * I can select one of more tags
+    * I can specify how many cards I want to study, or else
+      the default is 20 cards
+    * Cards are randomly selected from each tag evenly
+    * Cards are presented for review
+
+10.)
+    As a registered user
+    I want to study from all cards
+    So that I can review my whole collection
+
+    Acceptance Criteria:
+    * I can select to study cards from the entire collection
+    * I can specify how many cards I want to study, or else
+      the default is 20 cards
+    * Cards are randomly selected from all cards
+    * Cards are presented for review
+

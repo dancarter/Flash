@@ -18,6 +18,7 @@ class CardsController < ApplicationController
 
   def create
      @card = Card.new(card_params)
+     @card.user_id = current_user.id
 
     if @card.save
       redirect_to @card, notice: 'Card was successfully created.'

@@ -18,6 +18,7 @@ class TagsController < ApplicationController
 
   def create
      @tag = Tag.new(tag_params)
+     @tag.user_id = current_user.id
 
     if @tag.save
       redirect_to @tag, notice: 'Tag was successfully created.'
