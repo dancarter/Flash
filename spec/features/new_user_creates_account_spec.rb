@@ -38,7 +38,7 @@ feature "New user creates an account", %q{
 
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_content("Password can't be blank")
-      # expect(page).to have_content("Username can't be blank")
+      expect(page).to have_content("Username can't be blank")
     end
 
     it "displays error if passwords don't match" do
