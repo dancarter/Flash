@@ -9,4 +9,6 @@ describe User do
 
   it { should have_many(:cards).dependent(:destroy) }
   it { should have_many(:tags).dependent(:destroy) }
+
+  it { should validate_uniqueness_of :username }
 end
