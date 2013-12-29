@@ -1,0 +1,21 @@
+<h1>Listing cards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Front</th>
+      <th>Back</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.front %></td>
+        <td><%= card.back %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
