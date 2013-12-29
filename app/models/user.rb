@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :username
-
   has_many :cards,
     inverse_of: :user,
     dependent: :destroy
   has_many :tags,
     inverse_of: :user,
     dependent: :destroy
+
+  validates_presence_of :username
 end
