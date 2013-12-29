@@ -28,7 +28,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to @issue, notice: 'Issue was successfully updated.'
+      redirect_to @card, notice: 'Card was successfully updated.'
     else
       render action: 'edit'
     end
@@ -36,7 +36,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to cards_url }
+    redirect_to cards_url
   end
 
   private
