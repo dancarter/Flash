@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :tag do
-    name "MyString"
-    user_id 1
+    name "Ruby"
+
+    association :user, factory: :user
   end
 end

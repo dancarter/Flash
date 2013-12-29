@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
 
   def index
-    @cards = Card.all
+    @cards = current_user.cards unless current_user.nil?
   end
 
   def show
