@@ -43,6 +43,7 @@ group :test, :development do
   gem 'validates_email_format_of'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'launchy'
 end
 
 group :development do
