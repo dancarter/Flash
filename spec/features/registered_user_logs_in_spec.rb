@@ -11,13 +11,11 @@ feature "Registered user logs in", %q{
   # * If my username or password are incorrect, I must re-enter them
   # * If my username and password are correct I am logged into the site
 
-  before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
-  end
-
   context "provides correct account information" do
     it "logs into the app" do
+      user = FactoryGirl.create(:user)
+      user.confirm!
+
       visit '/'
 
       fill_in "Username", with: "TheUser"
@@ -32,6 +30,9 @@ feature "Registered user logs in", %q{
   context "provides invalid account information" do
 
     it "displays error if password is incorrect" do
+      user = FactoryGirl.create(:user)
+      user.confirm!
+
       visit '/'
 
       fill_in "Username", with: "TheUser"
@@ -43,6 +44,9 @@ feature "Registered user logs in", %q{
     end
 
     it "displays error if username is incorrect" do
+      user = FactoryGirl.create(:user)
+      user.confirm!
+
       visit '/'
 
       fill_in "Username", with: "WRONG"
@@ -51,6 +55,21 @@ feature "Registered user logs in", %q{
       click_on "Sign in"
 
       expect(page).to have_content("Invalid login or password.")
+    end
+  end
+
+  context "doesn't confirm email" do
+    it "displays an error if user does not confirm email" do
+      FactoryGirl.create(:user)
+
+      visit '/'
+
+      fill_in "Username", with: "TheUser"
+      fill_in "Password", with: "passw0rd"
+
+      click_on 'Sign in'
+
+      expect(page).to have_content("You have to confirm your account before continuing.")
     end
   end
 

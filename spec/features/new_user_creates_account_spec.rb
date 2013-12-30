@@ -52,6 +52,20 @@ feature "New user creates an account", %q{
 
       expect(page).to have_content("Password confirmation doesn't match Password")
     end
+
+    it "displays error when invalid email is given" do
+      visit '/'
+      click_on "Sign up"
+
+      fill_in "Username", with: "user"
+      fill_in "Email", with: "test@mailcom"
+      fill_in "Password", with: "passw0rd"
+      fill_in "Password confirmation", with: "passw0rd"
+
+      click_on "Sign up"
+
+      expect(page).to have_content("Email is invalid")
+    end
   end
 
 end
