@@ -33,6 +33,7 @@ group :doc do
 end
 
 gem 'devise'
+gem 'foundation-rails'
 
 group :test, :development do
   gem 'factory_girl_rails'
