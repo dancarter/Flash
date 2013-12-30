@@ -33,7 +33,7 @@
     * If I do not supply a front and back, I get an error
     * I can optionally supply one or more tags for the card
 
-4.)
+✔.)
     As a registered user
     I want to create a new tag
     So that I can tag cards
