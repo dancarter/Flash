@@ -11,54 +11,51 @@ feature "Registered user logs in", %q{
   # * If my username or password are incorrect, I must re-enter them
   # * If my username and password are correct I am logged into the site
 
-  context "provides correct account information" do
-    it "logs into the app" do
+  context "user account is confirmed" do
+    before :each do
       user = FactoryGirl.create(:user)
       user.confirm!
+    end
 
-      visit '/'
+    context "provides correct account information" do
+      it "logs into the app" do
+        visit '/'
 
-      fill_in "Username", with: "TheUser"
-      fill_in "Password", with: "passw0rd"
+        fill_in "Username", with: "TheUser"
+        fill_in "Password", with: "passw0rd"
 
-      click_on 'Sign in'
+        click_on 'Sign in'
 
-      expect(page).to have_content("Signed in successfully")
+        expect(page).to have_content("Signed in successfully")
+      end
+    end
+
+    context "provides invalid account information" do
+      it "displays error if password is incorrect" do
+        visit '/'
+
+        fill_in "Username", with: "TheUser"
+        fill_in "Password", with: "WRONG"
+
+        click_on "Sign in"
+
+        expect(page).to have_content("Invalid login or password.")
+      end
+
+      it "displays error if username is incorrect" do
+        visit '/'
+
+        fill_in "Username", with: "WRONG"
+        fill_in "Password", with: "passw0rd"
+
+        click_on "Sign in"
+
+        expect(page).to have_content("Invalid login or password.")
+      end
     end
   end
 
-  context "provides invalid account information" do
-
-    it "displays error if password is incorrect" do
-      user = FactoryGirl.create(:user)
-      user.confirm!
-
-      visit '/'
-
-      fill_in "Username", with: "TheUser"
-      fill_in "Password", with: "WRONG"
-
-      click_on "Sign in"
-
-      expect(page).to have_content("Invalid login or password.")
-    end
-
-    it "displays error if username is incorrect" do
-      user = FactoryGirl.create(:user)
-      user.confirm!
-
-      visit '/'
-
-      fill_in "Username", with: "WRONG"
-      fill_in "Password", with: "passw0rd"
-
-      click_on "Sign in"
-
-      expect(page).to have_content("Invalid login or password.")
-    end
-  end
-
-  context "doesn't confirm email" do
+  context "user account isn't confirmed" do
     it "displays an error if user does not confirm email" do
       FactoryGirl.create(:user)
 

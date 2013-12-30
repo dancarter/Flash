@@ -15,42 +15,46 @@ feature "Registered user creates a card", %q{
   before :each do
     user = FactoryGirl.create(:user)
     user.confirm!
-    login_as(user)
+    visit '/'
+    fill_in 'Username', with: user.username
+    fill_in 'Password', with: user.password
+    click_on 'Sign in'
+    # AuthenticationHelper.sign_in_as(user)
   end
 
   context "creates a valid card" do
     it "creates a new card" do
-      vists '/'
-      click_on "Create card"
+      visit '/'
+      click_on "New Card"
 
       fill_in "Front", with: "1 + 1 = ?"
       fill_in "Back", with: "2"
 
-      click_on "Save card"
+      click_on "Create Card"
 
-      expect(page).to have_content("successfully saved")
+      expect(page).to have_content("successfully created")
     end
   end
 
-  context "doesn't create an invalid card" do
+  context "doesn't create a valid card" do
     it "gives error when front is blank" do
-      vists '/'
-      click_on "Create card"
+      visit '/'
+      click_on "New Card"
 
       fill_in "Back", with: "2"
 
-      click_on "Save card"
+      click_on "Create Card"
 
       expect(page).to have_content("Front can't be blank")
     end
 
     it "gives error when back is blank" do
-      vists '/'
-      click_on "Create card"
+      visit '/'
+      click_on "New Card"
 
       fill_in "Front", with: "1 + 1 = ?"
 
-      click_on "Save card"
+      click_on "Create Card"
 
       expect(page).to have_content("Back can't be blank")
     end

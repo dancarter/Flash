@@ -21,7 +21,7 @@ class CardsController < AuthenticatedController
      @card.user_id = current_user.id
 
     if @card.save
-      redirect_to @card, notice: 'Card was successfully created.'
+      redirect_to new_card_path, notice: 'Card was successfully created.'
     else
       render action: 'new'
     end
@@ -36,8 +36,8 @@ class CardsController < AuthenticatedController
   end
 
   def destroy
-    @card.destroy
-    redirect_to cards_url
+    current_user.cards.find(params[:id]).destroy
+    redirect_to cards_path
   end
 
   private
