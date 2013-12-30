@@ -19,12 +19,11 @@ feature "Registered user logs in", %q{
   context "provides correct account information" do
     it "logs into the app" do
       visit '/'
-      click_on 'Login'
 
       fill_in "Username", with: "TheUser"
       fill_in "Password", with: "passw0rd"
 
-      click_on "Sign in"
+      click_on 'Sign in'
 
       expect(page).to have_content("Signed in successfully")
     end
@@ -34,7 +33,6 @@ feature "Registered user logs in", %q{
 
     it "displays error if password is incorrect" do
       visit '/'
-      click_on "Login"
 
       fill_in "Username", with: "TheUser"
       fill_in "Password", with: "WRONG"
@@ -46,7 +44,6 @@ feature "Registered user logs in", %q{
 
     it "displays error if username is incorrect" do
       visit '/'
-      click_on "Login"
 
       fill_in "Username", with: "WRONG"
       fill_in "Password", with: "passw0rd"

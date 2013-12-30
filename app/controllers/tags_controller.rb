@@ -1,11 +1,11 @@
-class TagsController < ApplicationController
+class TagsController < AuthenticatedController
 
   def index
-    @tags = Tag.all
+    @tags = current_user.tags.all
   end
 
   def show
-    @tag = Tag.find(params[:id])
+    @tag = current_user.tags.find(params[:id])
   end
 
   def new
@@ -13,7 +13,7 @@ class TagsController < ApplicationController
   end
 
   def edit
-    @tag = Tag.find(params[:id])
+    @tag = current_user.tags.find(params[:id])
   end
 
   def create

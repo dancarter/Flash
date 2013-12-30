@@ -1,11 +1,11 @@
-class CardsController < ApplicationController
+class CardsController < AuthenticatedController
 
   def index
-    @cards = current_user.cards unless current_user.nil?
+    @cards = current_user.cards
   end
 
   def show
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def new
@@ -13,7 +13,7 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def create
