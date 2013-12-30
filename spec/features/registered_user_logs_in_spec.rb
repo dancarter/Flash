@@ -19,7 +19,7 @@ feature "Registered user logs in", %q{
   context "provides correct account information" do
     it "logs into the app" do
       visit '/'
-      click_on "Login"
+      click_on 'Login'
 
       fill_in "Username", with: "TheUser"
       fill_in "Password", with: "passw0rd"

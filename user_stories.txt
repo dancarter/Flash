@@ -1,4 +1,4 @@
-1.)
+✔.)
     As a new user
     I want to create an account
     So that I can make flashcards
@@ -12,7 +12,7 @@
     * If I enter all my details, I receive a confirmation email
     * If I confirm my email, my account is successfully created
 
-2.)
+✔.)
     As a registered user
     I want to log in
     So that I can use the app
