@@ -22,7 +22,7 @@
     * If my username or password are incorrect, I must re-enter them
     * If my username and password are correct I am logged into the site
 
-3.)
+✔.)
     As a registered user
     I want to create a new card
     So that I can study it later

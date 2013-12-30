@@ -21,7 +21,7 @@ class TagsController < AuthenticatedController
      @tag.user_id = current_user.id
 
     if @tag.save
-      redirect_to @tag, notice: 'Tag was successfully created.'
+      redirect_to new_tag_path, notice: 'Tag was successfully created.'
     else
       render action: 'new'
     end
@@ -36,8 +36,8 @@ class TagsController < AuthenticatedController
   end
 
   def destroy
-    @tag.destroy
-    redirect_to tags_url
+    current_user.tags.find(params[:id]).destroy
+    redirect_to tags_path
   end
 
   private

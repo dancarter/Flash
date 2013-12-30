@@ -4,4 +4,6 @@ Logged in as <strong><%= current_user.email %></strong>.
 <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 
 <p><%= link_to 'All Cards', cards_path %></p>
+<p><%= link_to 'All Tags', tags_path %></p>
 <p><%= link_to 'New Card', new_card_path %></p>
+<p><%= link_to 'New Tag', new_tag_path %></p>
