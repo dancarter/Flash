@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :tag do
     name "Ruby"
 
-    association :user, factory: :user
+    association :user
   end
 end

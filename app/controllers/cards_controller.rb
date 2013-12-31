@@ -17,8 +17,7 @@ class CardsController < AuthenticatedController
   end
 
   def create
-     @card = Card.new(card_params)
-     @card.user_id = current_user.id
+     @card = current_user.cards.build(card_params)
 
     if @card.save
       redirect_to new_card_path, notice: 'Card was successfully created.'

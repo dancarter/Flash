@@ -15,11 +15,7 @@ feature "Registered user creates a card", %q{
   before :each do
     user = FactoryGirl.create(:user)
     user.confirm!
-    visit '/'
-    fill_in 'Username', with: user.username
-    fill_in 'Password', with: user.password
-    click_on 'Sign in'
-    # AuthenticationHelper.sign_in_as(user)
+    sign_in_as(user)
   end
 
   context "creates a valid card" do

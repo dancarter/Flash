@@ -5,6 +5,6 @@ FactoryGirl.define do
     front '1 + 1 = ?'
     back '2!'
 
-    association :user, factory: :user
+    association :user
   end
 end

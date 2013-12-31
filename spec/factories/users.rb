@@ -5,5 +5,6 @@ FactoryGirl.define do
     username 'TheUser'
     email 'fake@real.com'
     password 'passw0rd'
+    password_confirmation 'passw0rd'
   end
 end

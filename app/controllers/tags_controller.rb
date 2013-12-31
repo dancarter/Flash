@@ -17,8 +17,7 @@ class TagsController < AuthenticatedController
   end
 
   def create
-     @tag = Tag.new(tag_params)
-     @tag.user_id = current_user.id
+     @tag = current_user.tags.build(tag_params)
 
     if @tag.save
       redirect_to new_tag_path, notice: 'Tag was successfully created.'
