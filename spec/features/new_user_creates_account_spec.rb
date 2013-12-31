@@ -23,7 +23,7 @@ feature "New user creates an account", %q{
       fill_in "Password", with: "passw0rd"
       fill_in "Password confirmation", with: "passw0rd"
 
-      click_on "Sign up"
+      click_on "Create Account"
 
       expect(page).to have_content("confirmation link")
     end
@@ -34,7 +34,7 @@ feature "New user creates an account", %q{
       visit '/'
       click_on "Sign up"
 
-      click_on "Sign up"
+      click_on "Create Account"
 
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_content("Password can't be blank")
@@ -48,7 +48,7 @@ feature "New user creates an account", %q{
       fill_in "Password", with: "passw0rd"
       fill_in "Password confirmation", with: "passw1rd"
 
-      click_on "Sign up"
+      click_on "Create Account"
 
       expect(page).to have_content("Password confirmation doesn't match Password")
     end
@@ -62,7 +62,7 @@ feature "New user creates an account", %q{
       fill_in "Password", with: "passw0rd"
       fill_in "Password confirmation", with: "passw0rd"
 
-      click_on "Sign up"
+      click_on "Create Account"
 
       expect(page).to have_content("Email is invalid")
     end

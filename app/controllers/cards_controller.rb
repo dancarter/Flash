@@ -17,20 +17,24 @@ class CardsController < AuthenticatedController
   end
 
   def create
-     @card = current_user.cards.build(card_params)
+
+    @card = current_user.cards.build(card_params)
 
     if @card.save
-      redirect_to new_card_path, notice: 'Card was successfully created.'
+      @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
+      @card.save!
+      redirect_to root_path, notice: 'Card was successfully created.'
     else
       render action: 'new'
     end
   end
 
   def update
-    @card = current_user.cards.build(card_params)
+    @card = current_user.cards.find(params[:id])
 
     if @card.update(card_params)
-      redirect_to cards_path, notice: 'Card was successfully updated.'
+      @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
+      redirect_to root_path, notice: 'Card was successfully updated.'
     else
       render action: 'edit'
     end
@@ -38,7 +42,7 @@ class CardsController < AuthenticatedController
 
   def destroy
     current_user.cards.find(params[:id]).destroy
-    redirect_to cards_path, notice: 'Card was successfully deleted.'
+    redirect_to root_path, notice: 'Card was successfully deleted.'
   end
 
   private

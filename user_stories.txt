@@ -57,7 +57,7 @@
     * I can add new tags to the card
     * I can remove current tags from the card
 
-6.)
+✔.)
     As a registered user
     I want to edit a tag
     So that I can update it
@@ -79,7 +79,7 @@
     * If I select yes the card is deleted
     * If I select no nothing is changed
 
-8.)
+✔.)
     As a registered user
     I want to delete a tag
     So that I can remove unwanted tags

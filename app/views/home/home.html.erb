@@ -1,9 +1,28 @@
-<p class="navbar-text pull-right">
-Logged in as <strong><%= current_user.email %></strong>.
-<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-<%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% card = Card.find(params[:card_id]) unless params[:card_id].nil? %>
 
-<p><%= link_to 'All Cards', cards_path %></p>
-<p><%= link_to 'All Tags', tags_path %></p>
-<p><%= link_to 'New Card', new_card_path %></p>
-<p><%= link_to 'New Tag', new_tag_path %></p>
+<ul class="side-nav">
+  <% @cards.each do |card| %>
+    <li><%= link_to card.front, home_card_path(card.id) %></li>
+  <% end %>
+</ul>
+
+<div class="panel">
+  <h3><%= card.front unless card.nil? %></h3>
+</div>
+
+<div class="panel">
+  <p><%= card.back unless card.nil? %></p>
+</div>
+
+<div class="panel">
+  <% unless card.nil? %>
+    <% card.tags.each do |tag| %>
+      <p><%= tag.name %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'All Cards', cards_path %>
+<%= link_to 'All Tags', tags_path %>
+<%= link_to 'New Card', new_card_path %>
+<%= link_to 'New Tag', new_tag_path %>

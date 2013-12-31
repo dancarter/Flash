@@ -10,4 +10,8 @@ class Tag < ActiveRecord::Base
 
   validates_presence_of :name
   validates_presence_of :user_id
+
+  def self.select_array
+    Tag.all.collect {|p| [ p.name, p.id ] }
+  end
 end

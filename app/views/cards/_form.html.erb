@@ -19,6 +19,10 @@
     <%= f.label :back %><br>
     <%= f.text_area :back %>
   </div>
+  <div class="select">
+    <%= f.label :tags %><br>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: true }, { multiple: true } %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

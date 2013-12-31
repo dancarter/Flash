@@ -27,7 +27,7 @@ class TagsController < AuthenticatedController
   end
 
   def update
-    @tag = current_user.tags.build(tag_params)
+    @tag = current_user.tags.find(params[:id])
 
     if @tag.update(tag_params)
       redirect_to tags_path, notice: 'Tag was successfully updated.'

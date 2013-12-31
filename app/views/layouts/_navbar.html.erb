@@ -1,0 +1,39 @@
+<nav class="top-bar" data-topbar>
+
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Flash', root_path %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+
+    <ul class="right">
+
+      <li>
+        <%= if user_signed_in?
+          link_to 'Logout', destroy_user_session_path, method: :delete
+        else
+          link_to "Login", new_user_session_path
+        end %>
+      </li>
+
+      <% if user_signed_in? %>
+        <li class="has-dropdown">
+          <a href=""><%= "#{current_user.username.capitalize}" %></a>
+          <ul class="dropdown">
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Update", edit_user_registration_path %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
+        </li>
+      <% end %>
+    </ul>
+
+  </section>
+
+</nav>

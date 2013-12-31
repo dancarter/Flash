@@ -21,6 +21,8 @@ feature "Registered user logs in", %q{
       it "logs into the app" do
         visit '/'
 
+        click_on 'Login'
+
         fill_in "Username", with: "TheUser"
         fill_in "Password", with: "passw0rd"
 
@@ -34,6 +36,8 @@ feature "Registered user logs in", %q{
       it "displays error if password is incorrect" do
         visit '/'
 
+        click_on 'Login'
+
         fill_in "Username", with: "TheUser"
         fill_in "Password", with: "WRONG"
 
@@ -44,6 +48,8 @@ feature "Registered user logs in", %q{
 
       it "displays error if username is incorrect" do
         visit '/'
+
+        click_on 'Login'
 
         fill_in "Username", with: "WRONG"
         fill_in "Password", with: "passw0rd"
@@ -60,6 +66,8 @@ feature "Registered user logs in", %q{
       FactoryGirl.create(:user)
 
       visit '/'
+
+      click_on 'Login'
 
       fill_in "Username", with: "TheUser"
       fill_in "Password", with: "passw0rd"
