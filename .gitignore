@@ -16,3 +16,5 @@
 /tmp
 .env
 config/database.yml
+# Ignore simplecov output
+/coverage/

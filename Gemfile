@@ -48,6 +48,10 @@ group :test, :development do
   gem 'database_cleaner'
 end
 
+group :test do
+  gem 'coveralls', require: false
+end
+
 group :development do
   gem 'quiet_assets'
 end
