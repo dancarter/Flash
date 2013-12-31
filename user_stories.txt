@@ -44,7 +44,7 @@
     * If I do not supply a name, I get an error
     * I can optionally supply one or more tags for the card
 
-5.)
+✔.)
     As a registered user
     I want to edit a card
     So that I can update it
@@ -67,7 +67,7 @@
     * The current name of the tag is displayed
     * I can change the name of the tag
 
-7.)
+✔.)
     As a registered user
     I want to delete a card
     So that I can remove unwanted cards

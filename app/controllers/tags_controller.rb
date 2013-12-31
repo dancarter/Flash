@@ -1,7 +1,7 @@
 class TagsController < AuthenticatedController
 
   def index
-    @tags = current_user.tags.all
+    @tags = current_user.tags
   end
 
   def show
@@ -27,8 +27,10 @@ class TagsController < AuthenticatedController
   end
 
   def update
+    @tag = current_user.tags.build(tag_params)
+
     if @tag.update(tag_params)
-      redirect_to @tag, notice: 'Tag was successfully updated.'
+      redirect_to tags_path, notice: 'Tag was successfully updated.'
     else
       render action: 'edit'
     end
@@ -36,7 +38,7 @@ class TagsController < AuthenticatedController
 
   def destroy
     current_user.tags.find(params[:id]).destroy
-    redirect_to tags_path
+    redirect_to tags_path, notice: 'Tag was successfully deleted.'
   end
 
   private

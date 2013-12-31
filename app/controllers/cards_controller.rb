@@ -27,8 +27,10 @@ class CardsController < AuthenticatedController
   end
 
   def update
+    @card = current_user.cards.build(card_params)
+
     if @card.update(card_params)
-      redirect_to @card, notice: 'Card was successfully updated.'
+      redirect_to cards_path, notice: 'Card was successfully updated.'
     else
       render action: 'edit'
     end
@@ -36,7 +38,7 @@ class CardsController < AuthenticatedController
 
   def destroy
     current_user.cards.find(params[:id]).destroy
-    redirect_to cards_path
+    redirect_to cards_path, notice: 'Card was successfully deleted.'
   end
 
   private
