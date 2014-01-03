@@ -1,26 +1,6 @@
 <% card = Card.find(params[:card_id]) unless params[:card_id].nil? %>
 
-<ul class="side-nav">
-  <% @cards.each do |card| %>
-    <li><%= link_to card.front, home_card_path(card.id) %></li>
-  <% end %>
-</ul>
-
-<div class="panel">
-  <h3><%= card.front unless card.nil? %></h3>
-</div>
-
-<div class="panel">
-  <p><%= card.back unless card.nil? %></p>
-</div>
-
-<div class="panel">
-  <% unless card.nil? %>
-    <% card.tags.each do |tag| %>
-      <p><%= tag.name %></p>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'home/cards', card: card %>
 
 <%= link_to 'All Cards', cards_path %>
 <%= link_to 'All Tags', tags_path %>

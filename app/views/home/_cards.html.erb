@@ -1,0 +1,21 @@
+<p><div class="row">
+
+  <div class="small-2 columns">
+
+    <ul class="side-nav">
+    <li><%= link_to "New Card", root_path %></li>
+
+      <% @cards.each do |card| %>
+        <li><%= link_to card.front, home_card_path(card.id) %></li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <div class="small-10 columns">
+
+    <%= render 'home/form', card: card %>
+
+  </div>
+
+</div></p>
