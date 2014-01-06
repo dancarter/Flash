@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def home
-    if current_user.nil?
+    if !user_signed_in?
      render :action => 'welcome'
     else
       @cards = current_user.cards

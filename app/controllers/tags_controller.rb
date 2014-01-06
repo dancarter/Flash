@@ -4,10 +4,6 @@ class TagsController < AuthenticatedController
     @tags = current_user.tags
   end
 
-  def show
-    @tag = current_user.tags.find(params[:id])
-  end
-
   def new
     @tag = Tag.new
   end

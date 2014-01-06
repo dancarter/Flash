@@ -4,10 +4,6 @@ class CardsController < AuthenticatedController
     @cards = current_user.cards
   end
 
-  def show
-    @card = current_user.cards.find(params[:id])
-  end
-
   def new
     @card = Card.new
   end

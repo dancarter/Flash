@@ -23,7 +23,7 @@
   </div>
   <div class="select panel">
     <%= f.label :tags %><br>
-    <%= f.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: true }, { multiple: true } %>
+    <%= f.collection_select :tag_ids, current_user.tags, :id, :name, { include_blank: true }, { multiple: true } %>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -31,6 +31,5 @@
 <% end %>
 
 <% if !card.front.nil? %>
-  <%= button_to "Delete", {:controller => :cards,
-      :action => 'destroy', :id => card.id }, :method => :delete %>
+  <%= button_to "Delete", card, :method => :delete %>
 <% end %>
