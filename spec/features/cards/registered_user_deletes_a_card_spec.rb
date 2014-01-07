@@ -17,12 +17,14 @@ feature "Registered user deletes a card", %q{
     user = FactoryGirl.create(:user)
     user.confirm!
     sign_in_as(user)
-    FactoryGirl.create(:card, user: user)
+    @card = FactoryGirl.create(:card, user: user)
   end
 
   context "delete a card" do
     it "deletes the card" do
       visit '/cards'
+
+      click_on "#{@card.front}"
 
       click_on "Delete"
 

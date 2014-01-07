@@ -17,13 +17,14 @@ feature "Registered user deletes a tag", %q{
     user = FactoryGirl.create(:user)
     user.confirm!
     sign_in_as(user)
-    FactoryGirl.create(:tag, user: user)
+    @tag = FactoryGirl.create(:tag, user: user)
   end
 
   context "delete a tag" do
     it "deletes the tag" do
       visit '/tags'
 
+      click_on "#{@tag.name}"
       click_on "Delete"
 
       expect(page).to have_content("Tag was successfully deleted.")

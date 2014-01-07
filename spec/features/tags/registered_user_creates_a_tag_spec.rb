@@ -20,8 +20,7 @@ feature "Registered user creates a tag", %q{
 
   context "creates a valid tag" do
     it "creates a new card" do
-      visit '/'
-      click_on "New Tag"
+      visit '/tags'
 
       fill_in "Name", with: "Japanese"
 
@@ -33,8 +32,7 @@ feature "Registered user creates a tag", %q{
 
   context "doesn't create a valid card" do
     it "gives error when front is blank" do
-      visit '/'
-      click_on "New Tag"
+      visit '/tags'
 
       click_on "Create Tag"
 

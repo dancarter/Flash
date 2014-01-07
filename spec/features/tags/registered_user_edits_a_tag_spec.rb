@@ -18,13 +18,13 @@ feature "Registered user edits a tag", %q{
     user = FactoryGirl.create(:user)
     user.confirm!
     sign_in_as(user)
-    FactoryGirl.create(:tag, user: user)
+    @tag = FactoryGirl.create(:tag, user: user)
   end
 
   context "edit a tag with valid attributes" do
     it "updates the tag" do
       visit '/tags'
-      click_on "Edit"
+      click_on "#{@tag.name}"
 
       fill_in "Name", with: "Python"
 
@@ -37,7 +37,7 @@ feature "Registered user edits a tag", %q{
   context "edit a tag with invalid attributes" do
     it "gives error when name is blank" do
       visit '/tags'
-      click_on "Edit"
+      click_on "#{@tag.name}"
 
       fill_in "Name", with: ""
 

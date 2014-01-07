@@ -18,13 +18,13 @@ feature "Registered user edits a card", %q{
     user = FactoryGirl.create(:user)
     user.confirm!
     sign_in_as(user)
-    FactoryGirl.create(:card, user: user)
+    @card = FactoryGirl.create(:card, user: user)
   end
 
   context "edit a card with valid attributes" do
     it "updates the card" do
       visit '/cards'
-      click_on "Edit"
+      click_on "#{@card.front}"
 
       fill_in "Front", with: "2 + 1 = ?"
       fill_in "Back", with: "3"
@@ -38,7 +38,7 @@ feature "Registered user edits a card", %q{
   context "edit a card with invalid attributes" do
     it "gives error when front is blank" do
       visit '/cards'
-      click_on "Edit"
+      click_on "#{@card.front}"
 
       fill_in "Front", with: ""
 
@@ -49,7 +49,7 @@ feature "Registered user edits a card", %q{
 
     it "gives error when back is blank" do
       visit '/cards'
-      click_on "Edit"
+      click_on "#{@card.front}"
 
       fill_in "Back", with: ""
 

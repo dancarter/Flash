@@ -20,8 +20,7 @@ feature "Registered user creates a card", %q{
 
   context "creates a valid card" do
     it "creates a new card" do
-      visit '/'
-      click_on "New Card"
+      visit '/cards'
 
       fill_in "Front", with: "1 + 1 = ?"
       fill_in "Back", with: "2"
@@ -34,8 +33,7 @@ feature "Registered user creates a card", %q{
 
   context "doesn't create a valid card" do
     it "gives error when front is blank" do
-      visit '/'
-      click_on "New Card"
+      visit '/cards'
 
       fill_in "Back", with: "2"
 
@@ -45,7 +43,7 @@ feature "Registered user creates a card", %q{
     end
 
     it "gives error when back is blank" do
-      visit '/'
+      visit '/cards'
       click_on "New Card"
 
       fill_in "Front", with: "1 + 1 = ?"
