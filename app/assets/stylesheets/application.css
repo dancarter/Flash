@@ -29,3 +29,9 @@
 .side {
   top: -20px;
 }
+
+.alert-box {
+  width: 100% !important;
+  position: absolute !important;
+  z-index: 5000 !important;
+}
