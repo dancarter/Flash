@@ -1,23 +1,24 @@
-<h1>Listing tags</h1>
-<%= link_to 'Back', root_path %>
+<p><div class="row">
+  <div class="small-2 columns side">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-    </tr>
-  </thead>
+    <ul class="side-nav">
+      <li><%= link_to "New Tag", '/tags' %></li>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Delete', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class='scroll'>
+      <% @tags.each do |tag| %>
+        <li><%= link_to tag.name, tags_tag_path(tag.id) %></li>
+      <% end %>
+      </div>
+    </ul>
 
-<br>
+  </div>
+
+  <div class="small-10 columns main">
+
+    <div class='main'>
+      <% tag = params[:tag_id].nil? ? Tag.new : Tag.find(params[:tag_id]) %>
+      <%= render 'tags/tagform', tag: tag %>
+    </div>
+
+  </div>
+</div></p>

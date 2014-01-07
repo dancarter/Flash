@@ -16,7 +16,7 @@ class TagsController < AuthenticatedController
      @tag = current_user.tags.build(tag_params)
 
     if @tag.save
-      redirect_to new_tag_path, notice: 'Tag was successfully created.'
+      redirect_to tags_path, notice: 'Tag was successfully created.'
     else
       render action: 'new'
     end

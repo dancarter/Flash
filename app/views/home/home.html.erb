@@ -1,6 +1,0 @@
-<% card = Card.find(params[:card_id]) unless params[:card_id].nil? %>
-
-<%= render 'home/cards', card: card %>
-
-<%= link_to 'All Tags', tags_path %>
-<%= link_to 'New Tag', new_tag_path %>

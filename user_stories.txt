@@ -116,3 +116,9 @@
     * Cards are randomly selected from all cards
     * Cards are presented for review
 
+Future Features:
+Mass card deletion
+Card sharing
+Viewing other users profiles
+SRS Reviewing
+Cards with more than 2 sides

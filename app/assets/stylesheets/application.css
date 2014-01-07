@@ -13,3 +13,19 @@
 
  *= require_tree .
  */
+
+.main {
+  left: -20px !important;
+  width: 750px !important;
+}
+
+.scroll {
+  overflow: auto;
+  padding-left: 10px;
+  height: 600px;
+  width: 200px;
+}
+
+.side {
+  top: -20px;
+}

@@ -5,7 +5,11 @@ Flash::Application.routes.draw do
   resources :tags, except: [:show]
   resources :users, only: [:show]
 
-  get "/(:card_id)", to: "home#home", as: "home_card"
+
+  get "/cards/:card_id", to: "cards#index", as: "cards_card"
+
+  get "/tags/:tag_id", to: "tags#index", as: "tags_tag"
+
 
   root 'home#home'
 end

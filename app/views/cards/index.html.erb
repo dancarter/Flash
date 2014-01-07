@@ -1,26 +1,24 @@
-<h1>Listing cards</h1>
-<%= link_to 'Back', root_path %>
+<p><div class="row">
+  <div class="small-2 columns side">
 
-<table>
-  <thead>
-    <tr>
-      <th>Front</th>
-      <th>Back</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    <ul class="side-nav">
+      <li><%= link_to "New Card", '/cards' %></li>
 
-  <tbody>
-    <% @cards.each do |card| %>
-      <tr>
-        <td><%= card.front %></td>
-        <td><%= card.back %></td>
-        <td><%= link_to 'Edit', edit_card_path(card) %></td>
-        <td><%= link_to 'Delete', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class='scroll'>
+      <% @cards.each do |card| %>
+        <li><%= link_to card.front, cards_card_path(card.id) %></li>
+      <% end %>
+      </div>
+    </ul>
 
-<br>
+  </div>
+
+  <div class="small-10 columns main">
+
+    <div class='main'>
+      <% card = params[:card_id].nil? ? Card.new : Card.find(params[:card_id]) %>
+      <%= render 'cards/cardform', card: card %>
+    </div>
+
+  </div>
+</div></p>

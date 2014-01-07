@@ -10,7 +10,6 @@
   <section class="top-bar-section">
 
     <ul class="right">
-
       <li>
         <%= if user_signed_in?
           link_to 'Logout', destroy_user_session_path, method: :delete
@@ -34,6 +33,11 @@
       <% end %>
     </ul>
 
+    <ul class="left">
+      <li><a href="/cards">Cards</a></li>
+      <li><a href="/tags">Tags</a></li>
+      <li><a href="">Review</a></li>
+    </ul>
   </section>
 
 </nav>
