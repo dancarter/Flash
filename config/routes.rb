@@ -10,6 +10,8 @@ Flash::Application.routes.draw do
 
   get "/tags/:tag_id", to: "tags#index", as: "tags_tag"
 
+  get "/review", to: "pages#review", as: "review"
 
-  root 'home#home'
+
+  root 'pages#home'
 end

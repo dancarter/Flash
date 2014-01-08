@@ -36,13 +36,31 @@ feature 'User reviews cards from collection', %q{
   end
 
   context "user starts a review session with invalid options" do
-    it "gives an error" do
+    it "gives an error if amount is more than collection size" do
       visit review_path
 
       fill_in "Amount", with: '13'
       click_on "Begin"
 
       expect(page).to have_content("Amount is higher than the number of cards in your collection.")
+    end
+
+    it "gives an error if amount is not a number" do
+      visit review_path
+
+      fill_in "Amount", with: 'Hi!'
+      click_on "Begin"
+
+      expect(page).to have_content("Amount must be a number.")
+    end
+
+    it "gives an error if amount is negative" do
+      visit review_path
+
+      fill_in "Amount", with: '-10'
+      click_on "Begin"
+
+      expect(page).to have_content("Amount must be a positive number.")
     end
   end
 end

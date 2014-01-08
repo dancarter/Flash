@@ -21,7 +21,11 @@ class CardsController < AuthenticatedController
       @card.save!
       redirect_to cards_path, notice: 'Card was successfully created.'
     else
-      render action: 'new'
+      msg = ''
+      @card.errors.messages.each do |error|
+        msg << "#{error[0].to_s.capitalize} #{error[1][0]}. "
+      end
+      redirect_to cards_path, notice: "#{msg}Creation failed."
     end
   end
 
@@ -32,7 +36,11 @@ class CardsController < AuthenticatedController
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
       redirect_to cards_path, notice: 'Card was successfully updated.'
     else
-      render action: 'edit'
+      msg = ''
+      @card.errors.messages.each do |error|
+        msg << "#{error[0].to_s.capitalize} #{error[1][0]}. "
+      end
+      redirect_to cards_path, notice: "#{msg}Update failed."
     end
   end
 

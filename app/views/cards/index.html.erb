@@ -5,9 +5,9 @@
       <li><%= link_to "New Card", '/cards' %></li>
 
       <div class='scroll'>
-      <% @cards.each do |card| %>
-        <li><%= link_to card.front, cards_card_path(card.id) %></li>
-      <% end %>
+        <% @cards.each do |card| %>
+          <li><%= link_to card.front, cards_card_path(card.id) %></li>
+        <% end %>
       </div>
     </ul>
 
@@ -17,7 +17,7 @@
 
     <div class='main'>
       <% card = params[:card_id].nil? ? Card.new : Card.find(params[:card_id]) %>
-      <%= render 'cards/cardform', card: card %>
+      <%= render 'cards/form', card: card %>
     </div>
 
   </div>

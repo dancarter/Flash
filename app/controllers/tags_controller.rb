@@ -18,7 +18,11 @@ class TagsController < AuthenticatedController
     if @tag.save
       redirect_to tags_path, notice: 'Tag was successfully created.'
     else
-      render action: 'new'
+      msg = ''
+      @tag.errors.messages.each do |error|
+        msg << "#{error[0].to_s.capitalize} #{error[1][0]}. "
+      end
+      redirect_to tags_path, notice: "#{msg}Creation failed."
     end
   end
 
@@ -28,7 +32,11 @@ class TagsController < AuthenticatedController
     if @tag.update(tag_params)
       redirect_to tags_path, notice: 'Tag was successfully updated.'
     else
-      render action: 'edit'
+      msg = ''
+      @tag.errors.messages.each do |error|
+        msg << "#{error[0].to_s.capitalize} #{error[1][0]}. "
+      end
+      redirect_to tags_path, notice: "#{msg}Update failed."
     end
   end
 

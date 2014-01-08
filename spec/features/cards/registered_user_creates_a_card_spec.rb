@@ -27,7 +27,7 @@ feature "Registered user creates a card", %q{
 
       click_on "Create Card"
 
-      expect(page).to have_content("successfully created")
+      expect(page).to have_content("Card was successfully created.")
     end
   end
 

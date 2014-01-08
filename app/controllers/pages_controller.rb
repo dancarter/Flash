@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class PagesController < ApplicationController
 
   def home
     if !user_signed_in?
@@ -10,6 +10,9 @@ class HomeController < ApplicationController
   end
 
   def welcome
+  end
+
+  def review
   end
 
 end
