@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :tag do
-    name "Ruby"
+    sequence :name do |n|
+      "Ruby#{n}"
+    end
 
     association :user
   end

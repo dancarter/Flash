@@ -117,8 +117,10 @@
     * Cards are presented for review
 
 Future Features:
-Mass card deletion
-Card sharing
-Viewing other users profiles
-SRS Reviewing
-Cards with more than 2 sides
+1. Filter cards displayed
+2. Mass card deletion
+3. Delete cards under this tag, remove this tag from all cards buttons on tags
+4. Card sharing
+5. Viewing other users profiles
+6. SRS Reviewing
+7. Cards with more than 2 sides

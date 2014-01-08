@@ -2,8 +2,12 @@
 
 FactoryGirl.define do
   factory :card do
-    front '1 + 1 = ?'
-    back '2!'
+    sequence :front do |n|
+      "1 + #{n}?"
+    end
+    sequence :back do |n|
+      "#{n + 1}"
+    end
 
     association :user
   end
