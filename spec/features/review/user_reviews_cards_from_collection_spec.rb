@@ -17,11 +17,32 @@ feature 'User reviews cards from collection', %q{
     user = FactoryGirl.create(:user)
     user.confirm!
     sign_in_as(user)
+    FactoryGirl.create(:card, user: user)
+    FactoryGirl.create(:card, user: user)
+    FactoryGirl.create(:card, user: user)
+    FactoryGirl.create(:card, user: user)
+    FactoryGirl.create(:card, user: user)
   end
 
-  context "" do
-    it "" do
+  context "user starts review session with valid options" do
+    it "start a review session" do
+      visit review_path
 
+      fill_in "Amount", with: '3'
+      click_on "Begin"
+
+
+    end
+  end
+
+  context "user starts a review session with invalid options" do
+    it "gives an error" do
+      visit review_path
+
+      fill_in "Amount", with: '13'
+      click_on "Begin"
+
+      expect(page).to have_content("Amount is higher than the number of cards in your collection.")
     end
   end
 end

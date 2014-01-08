@@ -13,8 +13,8 @@ feature "Registered user logs in", %q{
 
   context "user account is confirmed" do
     before :each do
-      user = FactoryGirl.create(:user)
-      user.confirm!
+      @user = FactoryGirl.create(:user)
+      @user.confirm!
     end
 
     context "provides correct account information" do
@@ -23,8 +23,8 @@ feature "Registered user logs in", %q{
 
         click_on 'Login'
 
-        fill_in "Username", with: "TheUser"
-        fill_in "Password", with: "passw0rd"
+        fill_in "Username", with: @user.username
+        fill_in "Password", with: @user.password
 
         click_on 'Sign in'
 
@@ -38,8 +38,8 @@ feature "Registered user logs in", %q{
 
         click_on 'Login'
 
-        fill_in "Username", with: "TheUser"
-        fill_in "Password", with: "WRONG"
+        fill_in "Username", with: @user.username
+        fill_in "Password", with: 'WR0NG'
 
         click_on "Sign in"
 
@@ -51,8 +51,8 @@ feature "Registered user logs in", %q{
 
         click_on 'Login'
 
-        fill_in "Username", with: "WRONG"
-        fill_in "Password", with: "passw0rd"
+        fill_in "Username", with: 'WR0NG'
+        fill_in "Password", with: @user.password
 
         click_on "Sign in"
 
@@ -63,14 +63,14 @@ feature "Registered user logs in", %q{
 
   context "user account isn't confirmed" do
     it "displays an error if user does not confirm email" do
-      FactoryGirl.create(:user)
+      user = FactoryGirl.create(:user)
 
       visit '/'
 
       click_on 'Login'
 
-      fill_in "Username", with: "TheUser"
-      fill_in "Password", with: "passw0rd"
+      fill_in "Username", with: user.username
+      fill_in "Password", with: user.password
 
       click_on 'Sign in'
 
