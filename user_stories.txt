@@ -116,6 +116,28 @@
     * Cards are randomly selected from all cards
     * Cards are presented for review
 
+11.)
+    As a registered user
+    I want to search public tags
+    So that I can see other users' cards
+
+    Acceptance Criteria:
+    * I can see a list of public tags
+    * I can search to see tags with specific names
+    * If there are tags with names matching my search they are shown
+    * Otherwise, a no tags found message is shown
+    * I can click on a tag to see the cards it contains
+
+12.)
+    As a registered user
+    I want to copy a public tag
+    So that I can study its cards
+
+    Acceptance Criteria:
+    * I can add a public tag to my collection when viewing a public tag
+    * If I already have a tag with the same name, the tag is added with a suffix added
+    * The tag and all cards belonging to it are added to my collection
+
 Future Features:
 1. Filter cards displayed
 2. Mass card deletion
