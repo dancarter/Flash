@@ -138,6 +138,17 @@
     * If I already have a tag with the same name, the tag is added with a suffix added
     * The tag and all cards belonging to it are added to my collection
 
+13.)
+    As a registered user
+    I want to see other users' profiles
+    So that I can see their public information and tags
+
+    Acceptance Criteria:
+    * I can click a username from the share page to view that user's profile
+    * I can see their public information
+    * I can see a list of their public tags
+    * If I click a tag I can see the cards under that tag
+
 Future Features:
 1. Filter cards displayed
 2. Mass card deletion

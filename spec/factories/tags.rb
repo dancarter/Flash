@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence :name do |n|
       "Ruby#{n}"
     end
+    share true
 
     association :user
   end
