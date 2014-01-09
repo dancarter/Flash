@@ -14,12 +14,12 @@ feature "User views public tags", %q{
   # * I can click on a tag to see the cards it contains
 
   before :each do
-    user1 = FactoryGirl.create(:user)
+    @user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
-    user1.confirm!
+    @user1.confirm!
     user2.confirm!
-    @tag1 = FactoryGirl.create(:tag, user: user1, share: true)
-    @tag2 = FactoryGirl.create(:tag, user: user1, share: true)
+    @tag1 = FactoryGirl.create(:tag, user: @user1, share: true)
+    @tag2 = FactoryGirl.create(:tag, user: @user1, share: true)
     sign_in_as(user2)
   end
 
@@ -33,7 +33,7 @@ feature "User views public tags", %q{
     end
 
     it "should not list private tags" do
-      tag3 = FactoryGirl.create(:tag, user: user1)
+      tag3 = FactoryGirl.create(:tag, user: @user1)
 
       visit share_path
 
@@ -63,7 +63,8 @@ feature "User views public tags", %q{
   context "user clicks public tag to view cards" do
 
     it "should show the cards under chosen tag" do
-      card = FactoryGirl.create(:card, tag: @tag1, user: user1)
+      card = FactoryGirl.create(:card, user: @user1)
+      FactoryGirl.create(:tagging, card: card, tag: @tag1)
       visit share_path
       click_on @tag1.name
 

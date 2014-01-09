@@ -15,4 +15,8 @@ class PagesController < ApplicationController
   def review
   end
 
+  def share
+    @tags = Tag.all.where( share: true )
+  end
+
 end

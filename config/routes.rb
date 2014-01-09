@@ -12,6 +12,7 @@ Flash::Application.routes.draw do
 
   get "/review", to: "pages#review", as: "review"
 
+  get "/share", to: "pages#share", as: "share"
 
   root 'pages#home'
 end
