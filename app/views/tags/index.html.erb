@@ -17,7 +17,7 @@
 
     <div class='main'>
       <% tag = params[:tag_id].nil? ? Tag.new : Tag.find(params[:tag_id]) %>
-      <%= render 'tags/tagform', tag: tag %>
+      <%= render 'tags/form', tag: tag %>
     </div>
 
   </div>

@@ -2,6 +2,10 @@ class CardsController < AuthenticatedController
 
   def index
     @cards = current_user.cards
+    respond_to do |format|
+      format.html
+      format.json { render json: @cards }
+    end
   end
 
   def new

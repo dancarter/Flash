@@ -1,15 +1,17 @@
-<h2>Sign in</h2>
+<div class="user-form">
+  <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, :autofocus => true, :placeholder => "Username/Email" %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div><%= f.label :username %><br />
+    <%= f.text_field :username, :autofocus => true, :placeholder => "Username/Email" %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password, :placeholder => "Password" %></div>
+    <div><%= f.label :password %><br />
+    <%= f.password_field :password, :placeholder => "Password" %></div>
 
-  <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+    <div><%= f.submit "Sign in" %></div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>

@@ -60,7 +60,7 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: '-10'
       click_on "Begin"
 
-      expect(page).to have_content("Amount must be a positive number.")
+      expect(page).to have_content("Amount must be greater than zero")
     end
   end
 end

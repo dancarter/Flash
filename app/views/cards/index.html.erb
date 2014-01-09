@@ -3,7 +3,6 @@
 
     <ul class="side-nav">
       <li><%= link_to "New Card", '/cards' %></li>
-
       <div class='scroll'>
         <% @cards.each do |card| %>
           <li><%= link_to card.front, cards_card_path(card.id) %></li>
