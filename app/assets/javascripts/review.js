@@ -62,8 +62,10 @@ $( document ).ready(function() {
   };
 
   var error = function(amount) {
-    if ( amount <= 0 ) {
-
+    if ( !amount && amount != 0) {
+      alert("Review amount must be a number.")
+    } else if ( amount <= 0 ) {
+      alert("Review amount must be greater than zero.")
     }
   };
 
