@@ -10,5 +10,13 @@ FactoryGirl.define do
     end
     password 'passw0rd'
     password_confirmation 'passw0rd'
+    confirmed_at Time.now
+
+    trait :unconfirmed do
+      confirmed_at nil
+    end
+
+    factory :unconfirmed_user, traits: [:unconfirmed]
   end
+
 end

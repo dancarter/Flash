@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :tagging do
-    association :card, factory: :card
-    association :tag, factory: :tag
+    association :card
+    association :tag
   end
 end
