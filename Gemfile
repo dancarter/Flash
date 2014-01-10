@@ -35,7 +35,6 @@ end
 gem 'devise'
 gem 'foundation-rails'
 gem 'ransack'
-gem 'amoeba'
 
 group :test, :development do
   gem 'factory_girl_rails'

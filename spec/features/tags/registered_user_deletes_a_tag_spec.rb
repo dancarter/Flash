@@ -13,21 +13,32 @@ feature "Registered user deletes a tag", %q{
   # * If I select yes the tag is deleted
   # * If I select no nothing is changed
 
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:tag) { FactoryGirl.create(:tag, user: user) }
+
   before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
     sign_in_as(user)
-    @tag = FactoryGirl.create(:tag, user: user)
   end
 
   context "delete a tag" do
     it "deletes the tag" do
-      visit '/tags'
+      visit tags_path
 
-      click_on "#{@tag.name}"
+      click_on "#{tag.name}"
       click_on "Delete"
 
       expect(page).to have_content("Tag was successfully deleted.")
+    end
+
+    it "removes the tag from the user's collection" do
+      visit tags_path
+
+      click_on "#{tag.name}"
+      click_on "Delete"
+
+      visit tags_path
+
+      expect(page).to_not have_content(tag.name)
     end
   end
 

@@ -12,15 +12,15 @@ feature "Registered user creates a tag", %q{
   # * If I do not supply a name, I get an error
   # * I can optionally supply one or more tags for the card
 
+  let(:user) { FactoryGirl.create(:user) }
+
   before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
     sign_in_as(user)
   end
 
   context "creates a valid tag" do
     it "creates a new card" do
-      visit '/tags'
+      visit tags_path
 
       fill_in "Name", with: "Japanese"
 
@@ -32,7 +32,7 @@ feature "Registered user creates a tag", %q{
 
   context "doesn't create a valid card" do
     it "gives error when front is blank" do
-      visit '/tags'
+      visit tags_path
 
       click_on "Create Tag"
 

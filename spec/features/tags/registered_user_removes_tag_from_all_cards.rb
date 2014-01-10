@@ -11,28 +11,28 @@ feature "User removes tag from all tagged cards", %q{
   # * I can click a button to remove the rag from all cards
   # * When I click the button
 
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:tag) { FactoryGirl.create(:tag, user: user) }
+
   before :each do
-    @user = FactoryGirl.create(:user)
-    @user.confirm!
-    sign_in_as(@user)
-    @tag = FactoryGirl.create(:tag, user: @user)
+    sign_in_as(user)
   end
 
   context "user removes tag from all cards" do
 
     it "should remove tag from all cards" do
       visit tags_path
-      click_on @tag.name
+      click_on tag.name
       click_on "Remove from Cards"
 
       expect(page).to have_content("Tag successfully removed from all cards.")
     end
 
     it "should no longer associate any cards with the tag" do
-      card = FactoryGirl.create(:card, user: @user)
-      FactoryGirl.create(:tagging, card: card, tag: @tag)
+      card = FactoryGirl.create(:card, user: user)
+      FactoryGirl.create(:tagging, card: card, tag: tag)
       visit tags_path
-      click_on @tag.name
+      click_on tag.name
       click_on "Remove from Cards"
 
       expect(page).to have_content("0 cards under this tag.")

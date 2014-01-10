@@ -11,27 +11,26 @@ feature "User views profile", %q{
   # * I can see my username and email
   # * I can see all my tags
 
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:tag) { FactoryGirl.create(:tag, user: user, share: true) }
   before :each do
-    @user = FactoryGirl.create(:user)
-    @user.confirm!
-    sign_in_as(@user)
-    FactoryGirl.create(:tag, user: @user, share: true)
+    sign_in_as(user)
   end
 
   context "views profile" do
 
     it "shows user's username" do
-      visit '/'
+      visit root_path
       click_on "Profile"
 
-      expect(page).to have_content(@user.username)
+      expect(page).to have_content(user.username)
     end
 
     it "shows user's public tags" do
-      visit '/'
+      visit root_path
       click_on "Profile"
 
-      expect(page).to have_content(@user.tags.first.name)
+      expect(page).to have_content(user.tags.first.name)
     end
   end
 

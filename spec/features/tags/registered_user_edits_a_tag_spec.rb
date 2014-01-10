@@ -14,17 +14,17 @@ feature "Registered user edits a tag", %q{
   # * I can add new tags to the tag
   # * I can remove current tags from the tag
 
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:tag) { FactoryGirl.create(:tag, user: user) }
+
   before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
     sign_in_as(user)
-    @tag = FactoryGirl.create(:tag, user: user)
   end
 
   context "edit a tag with valid attributes" do
     it "updates the tag" do
-      visit '/tags'
-      click_on "#{@tag.name}"
+      visit tags_path
+      click_on "#{tag.name}"
 
       fill_in "Name", with: "Python"
 
@@ -36,8 +36,8 @@ feature "Registered user edits a tag", %q{
 
   context "edit a tag with invalid attributes" do
     it "gives error when name is blank" do
-      visit '/tags'
-      click_on "#{@tag.name}"
+      visit tags_path
+      click_on "#{tag.name}"
 
       fill_in "Name", with: ""
 

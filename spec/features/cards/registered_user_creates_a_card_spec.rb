@@ -12,9 +12,9 @@ feature "Registered user creates a card", %q{
   # * If I do not supply a front and back, I get an error
   # * I can optionally supply one or more tags for the card
 
+  let(:user) { FactoryGirl.create(:user) }
+
   before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
     sign_in_as(user)
   end
 

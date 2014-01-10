@@ -15,7 +15,7 @@ feature "New user creates an account", %q{
 
   context "provides account information" do
     it "creates a new account" do
-      visit '/'
+      visit root_path
       click_on "Sign up"
 
       fill_in "Username", with: "user"
@@ -31,7 +31,7 @@ feature "New user creates an account", %q{
 
   context "provides invalid account information" do
     it "displays errors when invalid info is given" do
-      visit '/'
+      visit root_path
       click_on "Sign up"
 
       click_on "Create Account"
@@ -42,7 +42,7 @@ feature "New user creates an account", %q{
     end
 
     it "displays error if passwords don't match" do
-      visit '/'
+      visit root_path
       click_on "Sign up"
 
       fill_in "Password", with: "passw0rd"
@@ -54,7 +54,7 @@ feature "New user creates an account", %q{
     end
 
     it "displays error when invalid email is given" do
-      visit '/'
+      visit root_path
       click_on "Sign up"
 
       fill_in "Username", with: "user"

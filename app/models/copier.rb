@@ -2,6 +2,7 @@ class Copier
 
   def self.copy_tag_to(tag, user)
     tag_dup = tag.dup
+    tag_dup.taggings_count = 0
     user.tags << tag_dup
     copy_cards_for_tag(tag, tag_dup)
     tag_dup

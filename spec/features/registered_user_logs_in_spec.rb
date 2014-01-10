@@ -12,19 +12,16 @@ feature "Registered user logs in", %q{
   # * If my username and password are correct I am logged into the site
 
   context "user account is confirmed" do
-    before :each do
-      @user = FactoryGirl.create(:user)
-      @user.confirm!
-    end
+    let(:user) { FactoryGirl.create(:user) }
 
     context "provides correct account information" do
       it "logs into the app" do
-        visit '/'
+        visit root_path
 
         click_on 'Login'
 
-        fill_in "Username", with: @user.username
-        fill_in "Password", with: @user.password
+        fill_in "Username", with: user.username
+        fill_in "Password", with: user.password
 
         click_on 'Sign in'
 
@@ -34,11 +31,11 @@ feature "Registered user logs in", %q{
 
     context "provides invalid account information" do
       it "displays error if password is incorrect" do
-        visit '/'
+        visit root_path
 
         click_on 'Login'
 
-        fill_in "Username", with: @user.username
+        fill_in "Username", with: user.username
         fill_in "Password", with: 'WR0NG'
 
         click_on "Sign in"
@@ -47,12 +44,12 @@ feature "Registered user logs in", %q{
       end
 
       it "displays error if username is incorrect" do
-        visit '/'
+        visit root_path
 
         click_on 'Login'
 
         fill_in "Username", with: 'WR0NG'
-        fill_in "Password", with: @user.password
+        fill_in "Password", with: user.password
 
         click_on "Sign in"
 
@@ -63,9 +60,9 @@ feature "Registered user logs in", %q{
 
   context "user account isn't confirmed" do
     it "displays an error if user does not confirm email" do
-      user = FactoryGirl.create(:user)
+      user = FactoryGirl.create(:unconfirmed_user)
 
-      visit '/'
+      visit root_path
 
       click_on 'Login'
 

@@ -13,22 +13,33 @@ feature "Registered user deletes a card", %q{
   # * If I select yes the card is deleted
   # * If I select no nothing is changed
 
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:card) { FactoryGirl.create(:card, user: user) }
+
+
   before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
     sign_in_as(user)
-    @card = FactoryGirl.create(:card, user: user)
   end
 
   context "delete a card" do
     it "deletes the card" do
-      visit '/cards'
+      visit cards_path
 
-      click_on "#{@card.front}"
-
+      click_on "#{card.front}"
       click_on "Delete"
 
       expect(page).to have_content("Card was successfully deleted.")
+    end
+
+    it "removes the card from the user's collection" do
+      visit cards_path
+
+      click_on "#{card.front}"
+      click_on "Delete"
+
+      visit cards_path
+
+      expect(page).to_not have_content(card.front)
     end
   end
 
