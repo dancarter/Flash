@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :tags,
     inverse_of: :user,
     dependent: :destroy
+  has_many :review_lists,
+    inverse_of: :user,
+    dependent: :destroy
 
   validates_presence_of :username
 

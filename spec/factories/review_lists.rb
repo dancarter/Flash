@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :review_list do
+    amount 1
+
+    association :user
   end
 end

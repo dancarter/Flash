@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :review_list_tag do
-    review_list_id 1
-    tag_id 1
+    association :review_list
+    association :tag
   end
 end

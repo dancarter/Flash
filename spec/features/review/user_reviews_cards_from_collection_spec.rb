@@ -12,25 +12,21 @@ feature 'User reviews cards from collection', %q{
   # * Cards are randomly selected from all cards
   # * Cards are presented for review
 
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:card) { FactoryGirl.create(:card, user: user) }
+
   before :each do
-    user = FactoryGirl.create(:user)
-    user.confirm!
     sign_in_as(user)
-    FactoryGirl.create(:card, user: user)
-    FactoryGirl.create(:card, user: user)
-    FactoryGirl.create(:card, user: user)
-    FactoryGirl.create(:card, user: user)
-    FactoryGirl.create(:card, user: user)
   end
 
   context "user starts review session with valid options" do
-    it "start a review session" do
+    it "starts a review session" do
       visit review_path
 
-      fill_in "Amount", with: '3'
+      fill_in "Amount", with: '1'
       click_on "Begin"
 
-
+      expect(page).to have_content(card.front)
     end
   end
 
@@ -41,7 +37,7 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: '13'
       click_on "Begin"
 
-      expect(page).to have_content("Amount is higher than the number of cards in your collection.")
+      expect(page).to have_content("Amount can't be higher than the number of cards in your collection.")
     end
 
     it "gives an error if amount is not a number" do
@@ -59,7 +55,16 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: '-10'
       click_on "Begin"
 
-      expect(page).to have_content("Amount must be greater than zero")
+      expect(page).to have_content("Amount must be greater than zero.")
+    end
+
+    it "gives an error if amount is zero" do
+      visit review_path
+
+      fill_in "Amount", with: '0'
+      click_on "Begin"
+
+      expect(page).to have_content("Amount must be greater than zero.")
     end
   end
 end

@@ -4,6 +4,7 @@ Flash::Application.routes.draw do
   resources :cards, except: [:show]
   resources :tags, except: [:show]
   resources :users, only: [:show]
+  resources :review_lists, only: [:show, :new, :create]
   resources :pages do
     collection do
       match 'search' => 'pages#search', via: [:get, :post], as: :search

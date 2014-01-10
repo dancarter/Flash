@@ -6,7 +6,6 @@ class Tag < ActiveRecord::Base
     through: :taggings,
     inverse_of: :tags
   has_many :review_list_tags,
-    inverse_of: :tag,
     dependent: :destroy
   has_many :review_lists,
     through: :review_list_tags,
@@ -17,8 +16,4 @@ class Tag < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :user
 
-  # amoeba do
-  #   clone [:cards]
-  #   set :user => current_user
-  # end
 end
