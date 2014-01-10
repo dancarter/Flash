@@ -10,7 +10,7 @@ class Tag < ActiveRecord::Base
     inverse_of: :tags
 
   validates_presence_of :name
-  validates_presence_of :user_id
+  validates_presence_of :user
 
   # amoeba do
   #   clone [:cards]

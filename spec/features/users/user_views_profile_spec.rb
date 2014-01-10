@@ -15,16 +15,10 @@ feature "User views profile", %q{
     @user = FactoryGirl.create(:user)
     @user.confirm!
     sign_in_as(@user)
-    FactoryGirl.create(:tag, user: @user)
+    FactoryGirl.create(:tag, user: @user, share: true)
   end
 
   context "views profile" do
-    it "shows user's email" do
-      visit '/'
-      click_on "Profile"
-
-      expect(page).to have_content(@user.email)
-    end
 
     it "shows user's username" do
       visit '/'
@@ -33,7 +27,7 @@ feature "User views profile", %q{
       expect(page).to have_content(@user.username)
     end
 
-    it "shows user's tags" do
+    it "shows user's public tags" do
       visit '/'
       click_on "Profile"
 
