@@ -6,7 +6,7 @@
 
       <div class='scroll'>
       <% @tags.each do |tag| %>
-        <li><%= link_to tag.name, tags_tag_path(tag.id) %></li>
+        <li><%= link_to tag.name, tags_tag_path(tag) %></li>
       <% end %>
       </div>
     </ul>

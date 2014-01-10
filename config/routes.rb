@@ -14,6 +14,8 @@ Flash::Application.routes.draw do
 
   get "/tags/:tag_id", to: "tags#index", as: "tags_tag"
 
+  post "/remove/:tag_id", to: "tags#remove", as: "tags_removetag"
+
   get "/review", to: "pages#review", as: "review"
 
   get "/share", to: "pages#share", as: "share"

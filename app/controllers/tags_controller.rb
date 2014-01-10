@@ -45,6 +45,14 @@ class TagsController < AuthenticatedController
     redirect_to tags_path, notice: 'Tag was successfully deleted.'
   end
 
+  def remove
+    @tag = Tag.find(params[:tag_id])
+    @tag.taggings.each do |tagging|
+      tagging.destroy
+    end
+    redirect_to tags_tag_path(@tag), notice: "Tag successfully removed from all cards."
+  end
+
   private
 
   def tag_params

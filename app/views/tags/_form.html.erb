@@ -23,6 +23,7 @@
 <% end %>
 
 <% if !tag.name.nil? %>
-  <%= button_to "Delete", tag, :method => :delete %>
+  <div><%= button_to "Delete", tag, :method => :delete %>
+  <%= button_to "Remove from Cards", tags_removetag_path(tag) %></div>
   <p><%= "#{tag.taggings_count} cards under this tag." %></p>
 <% end %>

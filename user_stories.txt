@@ -138,7 +138,7 @@
     * If I already have a tag with the same name, the tag is added with a suffix added
     * The tag and all cards belonging to it are added to my collection
 
-13.)
+✔.)
     As a registered user
     I want to see other users' profiles
     So that I can see their public information and tags
@@ -149,11 +149,20 @@
     * I can see a list of their public tags
     * If I click a tag I can see the cards under that tag
 
+14.)
+    As a registered user
+    I want to remove a specific tag from all cards
+    So that it will no longer be tagging any cards
+
+    Acceptance Criteria:
+    * When viewing a tag
+    * I can click a button to remove the rag from all cards
+    * When I click the button
+    * The cards remain unchanged but are no longer related to the tag
+
 Future Features:
 1. Filter cards displayed
 2. Mass card deletion
-3. Delete cards under this tag, remove this tag from all cards buttons on tags
-4. Card sharing
-5. Viewing other users profiles
-6. SRS Reviewing
-7. Cards with more than 2 sides
+3. Delete cards under this tag
+4. SRS Reviewing
+5. Cards with more than 2 sides
