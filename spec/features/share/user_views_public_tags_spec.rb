@@ -46,14 +46,16 @@ feature "User views public tags", %q{
 
     it "should show tag with matching name" do
       visit share_path
-      fill_in "Search", with: @tag1.name
+      fill_in "Search by tag name", with: @tag1.name
+      click_on "Search"
 
       expect(page).to have_content(@tag1.name)
     end
 
     it "should not show tag without matching name" do
       visit share_path
-      fill_in "Search", with: @tag1.name
+      fill_in "Search by tag name", with: @tag1.name
+      click_on "Search"
 
       expect(page).to_not have_content(@tag2.name)
     end

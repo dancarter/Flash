@@ -16,7 +16,17 @@ class PagesController < ApplicationController
   end
 
   def share
-    @tags = Tag.all.where( share: true )
+    @q = Tag.all.where( share: true ).search(params[:q])
+    @tags = @q.result(distinct: true)
+  end
+
+  def search
+    share
+    render :share
+  end
+
+  def sharetag
+    @tag = Tag.find(params[:tag_id])
   end
 
 end

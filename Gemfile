@@ -34,6 +34,7 @@ end
 
 gem 'devise'
 gem 'foundation-rails'
+gem 'ransack'
 
 group :test, :development do
   gem 'factory_girl_rails'

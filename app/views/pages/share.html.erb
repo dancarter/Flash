@@ -1,4 +1,18 @@
-<% @tags.each do |tag| %>
-  <h3><%= tag.name %></h3>
-  <p><%= tag.user.username %></p>
-<% end %>
+<div class="page-center">
+
+  <div>
+    <h3>Search Tags</h3>
+    <%= search_form_for @q, url: search_pages_path,
+                        html: { method: :post } do |f| %>
+      <%= f.text_field :name_cont, placeholder: "Search by tag name" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+  <h3>Results</h3>
+  <% @tags.each do |tag| %>
+    <h3><%= link_to tag.name, share_tag_path(tag.user, tag) %></h3>
+    <p>created by: <%= link_to tag.user.username, user_path(tag.user) %></p>
+  <% end %>
+
+</div>

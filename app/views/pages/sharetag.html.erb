@@ -1,0 +1,14 @@
+<div class="page-center">
+
+  <h3><%= @tag.name %></h3>
+  <p><%= link_to @tag.user.username, user_path(@tag.user) %></p>
+
+  <% @tag.cards.each do |card| %>
+    <div class="panel">
+      <%= card.front %>
+      <hr>
+      <%= card.back %>
+    </div>
+  <% end %>
+
+</div>

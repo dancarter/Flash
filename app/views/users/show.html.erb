@@ -1,8 +1,11 @@
-<h3><%= @user.username %></h3>
-<p><%= @user.email %></p>
+<div class="page-center">
 
-<ul>
-<% @user.tags.each do |tag| %>
-  <li><%= tag.name %></li>
-<% end %>
-</ul>
+  <h2><%= @user.username %></h2>
+
+  <h4>Shared Tags</h4>
+  <% @user.tags.where( share: true ).each do |tag| %>
+    <p><%= link_to tag.name, share_tag_path(tag.user, tag) %></p>
+  <% end %>
+
+
+</div>
