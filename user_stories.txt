@@ -116,7 +116,7 @@
     * Cards are randomly selected from all cards
     * Cards are presented for review
 
-11.)
+✔.)
     As a registered user
     I want to search public tags
     So that I can see other users' cards

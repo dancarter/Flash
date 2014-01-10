@@ -29,4 +29,9 @@ class PagesController < ApplicationController
     @tag = Tag.find(params[:tag_id])
   end
 
+  def copy
+    Tag.find(params[:tag_id]).amoeba_dup
+    redirect_to action: 'share', notice: "Tag successfully copied."
+  end
+
 end

@@ -8,8 +8,7 @@ feature 'User reviews cards from collection', %q{
 
   # Acceptance Criteria:
   # * I can select to study cards from the entire collection
-  # * I can specify how many cards I want to study, or else
-  #   the default is 20 cards
+  # * I can specify how many cards I want to study
   # * Cards are randomly selected from all cards
   # * Cards are presented for review
 

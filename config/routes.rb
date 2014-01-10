@@ -20,5 +20,7 @@ Flash::Application.routes.draw do
 
   get "/users/:id/:tag_id", to: "pages#sharetag", as: "share_tag"
 
+  post "/copy/:tag_id", to: "pages#copy", as: "copy"
+
   root 'pages#home'
 end

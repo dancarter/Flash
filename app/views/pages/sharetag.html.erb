@@ -3,6 +3,8 @@
   <h3><%= @tag.name %></h3>
   <p><%= link_to @tag.user.username, user_path(@tag.user) %></p>
 
+  <%= button_to "Add to Collection", copy_path(@tag) %>
+
   <% @tag.cards.each do |card| %>
     <div class="panel">
       <%= card.front %>
