@@ -13,10 +13,10 @@ class ReviewList
         allCards << tag.cards
       end
     else
-      allCards = Card.all
+      allCards = current_user.cards
     end
     binding.pry
-    @cards = allCards.flattem.sample(@amount)
+    @cards = allCards.flatten.sample(@amount)
   end
 
 end
