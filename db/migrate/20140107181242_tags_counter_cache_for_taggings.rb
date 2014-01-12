@@ -7,6 +7,7 @@ class TagsCounterCacheForTaggings < ActiveRecord::Migration
 
   def down
     remove_column :tags, :taggings_count
+    remove_index :tags, :taggings_count
   end
 
 end

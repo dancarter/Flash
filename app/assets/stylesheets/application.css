@@ -46,25 +46,14 @@
   max-width: 550px;
 }
 
-.card-display, .options-div {
+.options-div {
   position: relative;
   top: -15px;
   min-height: 300px;
   min-width: 550px;
 }
 
-.card {
-  margin-top: 80px;
-}
-
-#divide {
-  margin-top: 100px;
-}
-
-#front {
-  text-align: center;
-}
-
-#back {
+#front, #back {
+  padding-top: 50px;
   text-align: center;
 }

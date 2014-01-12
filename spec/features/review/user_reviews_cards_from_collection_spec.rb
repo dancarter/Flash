@@ -46,7 +46,7 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: 'Hi!'
       click_on "Begin"
 
-      expect(page).to have_content("Amount must be a number.")
+      expect(page).to have_content("Amount is not a number")
     end
 
     it "gives an error if amount is negative" do

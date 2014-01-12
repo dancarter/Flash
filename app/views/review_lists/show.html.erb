@@ -1,5 +1,19 @@
 <div class="page-center">
-  <%= @card.front %>
-  <%= @card.back %>
-  <%= link_to "Next", review_list_path(@review_list) %>
+
+  <div id='front'>
+    <div class='panel'>
+      <%= @card.front %>
+    </div>
+    <input id='answer' type='button' value="Answer">
+  </div>
+
+  <div id='back' class='hidden'>
+    <div class='panel'>
+      <%= @card.back %>
+    </div>
+    <%= link_to "Next", review_list_path(@review_list) %>
+  </div>
+
 </div>
+
+<%= javascript_include_tag 'review' %>

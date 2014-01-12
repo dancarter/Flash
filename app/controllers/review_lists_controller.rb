@@ -3,8 +3,9 @@ class ReviewListsController < AuthenticatedController
   def show
     @review_list = ReviewList.find(params[:id])
     if @review_list.review_list_cards.size > 0
-      @card = @review_list.review_list_cards.first.card
-      @review_list.review_list_cards.first.destroy
+      review_list_card = @review_list.review_list_cards.shuffle.first
+      @card = review_list_card.card
+      review_list_card.destroy
     else
       redirect_to review_path, notice: "Review Complete!"
     end

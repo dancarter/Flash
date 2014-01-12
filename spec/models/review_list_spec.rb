@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe ReviewList do
-  it { should validate_presence_of :user}
+  it { should validate_presence_of :user }
+  it { should validate_presence_of :amount }
 
   it { should have_many(:review_list_tags).dependent(:destroy) }
   it { should have_many(:review_list_cards).dependent(:destroy) }

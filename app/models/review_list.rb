@@ -13,6 +13,9 @@ class ReviewList < ActiveRecord::Base
     inverse_of: :review_lists
 
   validates_presence_of :user
+  validates_presence_of :amount
+
+  validates :amount, :numericality => {:only_integer => true}
 
   def self.set_cards(review_list, user)
     allCards = []

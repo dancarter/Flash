@@ -2,7 +2,7 @@
 
   <h3>Review</h3>
 
-  <div class='form '>
+  <div class='form'>
     <dl class="tabs" data-tab>
       <dd class="active"><a href="#all">All Cards</a></dd>
       <dd><a href="#tags">By Tags</a></dd>
@@ -11,11 +11,10 @@
     <div class="tabs-content">
       <div class="content active" id="all">
         <div class='panel options-div'>
-          <% review_list = ReviewList.new %>
+          <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
           <%= form_for(review_list) do |f| %>
             <% if review_list.errors.any? %>
               <div id="error_explanation">
-                <h2><%= pluralize(review_list.errors.count, "error") %> prohibited this review_list from being saved:</h2>
                 <ul>
                 <% review_list.errors.full_messages.each do |msg| %>
                   <li><%= msg %></li>
