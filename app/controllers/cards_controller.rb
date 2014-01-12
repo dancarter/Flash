@@ -2,10 +2,7 @@ class CardsController < AuthenticatedController
 
   def index
     @cards = current_user.cards
-    respond_to do |format|
-      format.html
-      format.json { render json: @cards }
-    end
+    @card = Card.find(params[:card_id]) unless params[:card_id].nil?
   end
 
   def new
@@ -17,19 +14,14 @@ class CardsController < AuthenticatedController
   end
 
   def create
-
     @card = current_user.cards.build(card_params)
-
     if @card.save
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
       @card.save!
       redirect_to cards_path, notice: 'Card was successfully created.'
     else
-      msg = ''
-      @card.errors.messages.each do |error|
-        msg << "#{error[0].to_s.capitalize} #{error[1][0]}. "
-      end
-      redirect_to cards_path, notice: "#{msg}Creation failed."
+      @cards = current_user.cards - [@card]
+      render :index
     end
   end
 
@@ -40,11 +32,8 @@ class CardsController < AuthenticatedController
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
       redirect_to cards_path, notice: 'Card was successfully updated.'
     else
-      msg = ''
-      @card.errors.messages.each do |error|
-        msg << "#{error[0].to_s.capitalize} #{error[1][0]}. "
-      end
-      redirect_to cards_path, notice: "#{msg}Update failed."
+      @cards = current_user.cards
+      render :index
     end
   end
 

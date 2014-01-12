@@ -16,7 +16,7 @@
   <div class="small-10 columns main">
 
     <div class='main'>
-      <% tag = params[:tag_id].nil? ? Tag.new : Tag.find(params[:tag_id]) %>
+      <% tag = @tag.nil? ? Tag.new : @tag %>
       <%= render 'tags/form', tag: tag %>
     </div>
 
