@@ -2,7 +2,7 @@ class ReviewListsController < AuthenticatedController
 
   def show
     @review_list = ReviewList.find(params[:id])
-    if @review_list.review_list_cards.size > 0
+    if @review_list.review_list_cards.count > 0
       review_list_card = @review_list.review_list_cards.shuffle.first
       @card = review_list_card.card
       review_list_card.destroy
