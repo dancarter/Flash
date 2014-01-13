@@ -57,6 +57,16 @@
   min-width: 550px;
 }
 
+.card-list-divider {
+  margin-top: 0;
+  width:200px;
+}
+
+.card-filter {
+  height: 35px;
+  width: 150px;
+}
+
 /* Flip Animation */
 .flip-container {
   -webkit-perspective:1200;

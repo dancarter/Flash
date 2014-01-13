@@ -2,7 +2,15 @@
   <div class="small-2 columns side">
 
     <ul class="side-nav">
-      <li><%= link_to "New Card", '/cards' %></li>
+      <li>
+        <%= link_to "New Card", '/cards' %>
+      </li>
+      <li>
+        <%= select_tag "tags", options_from_collection_for_select(current_user.tags, "id", "name"), :include_blank => true, class: 'card-filter' %>
+      </li>
+
+      <hr class="card-list-divider">
+
       <div class='scroll'>
         <% @cards.each do |card| %>
           <li><%= link_to card.front, cards_card_path(card.id) %></li>
@@ -21,3 +29,11 @@
 
   </div>
 </div></p>
+
+<%= content_for :extra_footer do %>
+  <script type='text/javascript'>
+      $('body').on('click', '.card-filter', function(event) {
+        event.preventDefault();
+      });
+  </script>
+<% end %>
