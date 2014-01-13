@@ -92,7 +92,7 @@
       any cards with that tag, but the cards are not deleted
     * If I select no nothing is changed
 
-9.)
+✔.)
     As a registered user
     I want to select tags to review
     So that I can study cards

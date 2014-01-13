@@ -23,7 +23,9 @@
 <% end %>
 
 <% if !tag.id.nil? %>
-  <div><%= button_to "Delete", tag, :method => :delete %>
-  <%= button_to "Remove from Cards", tags_removetag_path(tag) %></div>
+  <div>
+    <%= button_to "Delete", tag, :method => :delete %>
+    <%= button_to "Remove from Cards", tags_removetag_path(tag) %>
+  </div>
   <p><%= pluralize(tag.taggings_count,'card') %> under this tag.</p>
 <% end %>
