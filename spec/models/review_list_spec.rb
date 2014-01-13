@@ -22,4 +22,16 @@ describe ReviewList do
     end
   end
 
+  describe "#all_cards" do
+    it "should return all cards available to a review list" do
+      user = FactoryGirl.create(:user)
+      card = FactoryGirl.create(:card, user: user)
+      review_list = FactoryGirl.create(:review_list, user: user)
+      FactoryGirl.create(:review_list_card, card: card, review_list: review_list)
+
+      all_cards = ReviewList.all_cards(review_list, user)
+      expect(all_cards).to include(card)
+    end
+  end
+
 end

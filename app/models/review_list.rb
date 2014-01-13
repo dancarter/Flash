@@ -4,7 +4,8 @@ class ReviewList < ActiveRecord::Base
     inverse_of: :review_list
   has_many :review_list_cards,
     dependent: :destroy,
-    inverse_of: :review_list
+    inverse_of: :review_list,
+    dependent: :destroy
   has_many :tags,
     through: :review_list_tags,
     inverse_of: :review_lists
@@ -26,28 +27,24 @@ class ReviewList < ActiveRecord::Base
 
 
   def self.set_cards(review_list, user)
-    allCards = []
+    review_list.cards = ReviewList.all_cards(review_list, user).flatten.sample(review_list.amount)
+  end
+
+  def self.all_cards(review_list, user)
+    all_cards = []
     tags = review_list.tags
     if tags.size > 0
       tags.each do |tag|
-        allCards << tag.cards
+        all_cards << tag.cards
       end
     else
-      allCards = user.cards
+      all_cards = user.cards
     end
-    review_list.cards = allCards.flatten.sample(review_list.amount)
+    all_cards
   end
 
   def less_than_or_equal_to_available_cards
-    allCards = []
-    if tags.size > 0
-      tags.each do |tag|
-        allCards << tag.cards
-      end
-    else
-      allCards = user.cards
-    end
-    if amount > allCards.count
+    if !amount.nil? && amount > ReviewList.all_cards(self, user).count
       errors.add(:amount, "can't be greater than available cards")
     end
   end
