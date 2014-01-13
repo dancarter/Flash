@@ -5,7 +5,6 @@
 $( document ).ready(function() {
 
   $( '#answer' ).on( 'click', function() {
-    console.log('working!');
     $( '#back' ).toggleClass( 'hidden' );
     $( '#front' ).toggleClass( 'hidden' );
   });

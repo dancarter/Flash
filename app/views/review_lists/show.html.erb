@@ -1,5 +1,7 @@
 <div class="page-center">
 
+  <%= "#{(@review_list.amount - @review_list.review_list_cards_count) + 1}/#{@review_list.amount}" %>
+
   <div id='front'>
     <div class='panel'>
       <%= @card.front %>

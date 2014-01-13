@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110221122) do
+ActiveRecord::Schema.define(version: 20140112213603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,12 @@ ActiveRecord::Schema.define(version: 20140110221122) do
   create_table "review_lists", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount",     null: false
+    t.integer  "amount",                              null: false
     t.integer  "user_id"
+    t.integer  "review_list_cards_count", default: 0
   end
+
+  add_index "review_lists", ["review_list_cards_count"], name: "index_review_lists_on_review_list_cards_count", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "card_id",    null: false

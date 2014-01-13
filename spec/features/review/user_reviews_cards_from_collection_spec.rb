@@ -37,7 +37,7 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: '13'
       click_on "Begin"
 
-      expect(page).to have_content("Amount can't be higher than the number of cards in your collection.")
+      expect(page).to have_content("Amount can't be greater than available cards")
     end
 
     it "gives an error if amount is not a number" do
@@ -55,7 +55,7 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: '-10'
       click_on "Begin"
 
-      expect(page).to have_content("Amount must be greater than zero.")
+      expect(page).to have_content("Amount must be greater than or equal to 1")
     end
 
     it "gives an error if amount is zero" do
@@ -64,7 +64,7 @@ feature 'User reviews cards from collection', %q{
       fill_in "Amount", with: '0'
       click_on "Begin"
 
-      expect(page).to have_content("Amount must be greater than zero.")
+      expect(page).to have_content("Amount must be greater than or equal to 1")
     end
   end
 end
