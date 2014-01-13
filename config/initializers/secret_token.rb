@@ -9,4 +9,10 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Flash::Application.config.secret_key_base = ENV['SECRET_KEY']
+if Rails.env.development? || Rails.env.test?
+  Flash::Application.config.secret_key_base = ("a" * 30)
+else
+  Flash::Application.config.secret_key_base = ENV['SECRET_KEY']
+end
+
+heroku config set secret_key='asdasdasdasdas'
