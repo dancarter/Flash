@@ -14,5 +14,3 @@ if Rails.env.development? || Rails.env.test?
 else
   Flash::Application.config.secret_key_base = ENV['SECRET_KEY']
 end
-
-heroku config set secret_key='asdasdasdasdas'
