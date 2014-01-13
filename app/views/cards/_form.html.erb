@@ -21,7 +21,7 @@
   </div>
   <div class="select panel">
     <%= f.label :tags %><br>
-    <%= f.collection_select :tag_ids, current_user.tags, :id, :name, { include_blank: true }, { multiple: true } %>
+    <%= f.collection_select :tag_ids, current_user.tags, :id, :name, {}, { multiple: true } %>
   </div>
   <div class="actions">
     <%= f.submit %>

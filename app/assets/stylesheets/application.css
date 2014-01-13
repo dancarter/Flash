@@ -33,6 +33,10 @@
 .alert-box {
   width: 100% !important;
   position: absolute !important;
+  z-index: 4999 !important;
+}
+
+.dropdown {
   z-index: 5000 !important;
 }
 

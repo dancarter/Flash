@@ -29,7 +29,7 @@ class ReviewListsController < AuthenticatedController
   private
 
   def review_list_params
-    params.require(:review_list).permit(:amount, :tags => [])
+    params.require(:review_list).permit(:amount, :tag_ids => [])
   end
 
 end

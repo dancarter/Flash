@@ -36,8 +36,29 @@
 
       <div class="content" id="tags">
         <div class='panel options-div'>
-        TODO: Review List Form
-        </div>
+          <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
+          <%= form_for(review_list) do |f| %>
+            <% if review_list.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                <% review_list.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="select panel">
+              <%= f.label :tags %><br>
+              <%= f.collection_select :tag_ids, current_user.tags, :id, :name, {}, { multiple: true } %>
+            </div>
+            <div class="field panel">
+              <%= f.label :amount %><br>
+              <%= f.text_field :amount, placeholder: "Amount of cards to review" %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Begin" %>
+            </div>
+          <% end %>
       </div>
     </div>
   </div>

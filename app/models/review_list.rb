@@ -27,7 +27,7 @@ class ReviewList < ActiveRecord::Base
 
 
   def self.set_cards(review_list, user)
-    review_list.cards = ReviewList.all_cards(review_list, user).flatten.sample(review_list.amount)
+    review_list.cards = ReviewList.all_cards(review_list, user).sample(review_list.amount)
   end
 
   def self.all_cards(review_list, user)
@@ -40,7 +40,7 @@ class ReviewList < ActiveRecord::Base
     else
       all_cards = user.cards
     end
-    all_cards
+    all_cards.flatten
   end
 
   def less_than_or_equal_to_available_cards

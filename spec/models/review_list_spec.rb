@@ -23,14 +23,25 @@ describe ReviewList do
   end
 
   describe "#all_cards" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:card) { FactoryGirl.create(:card, user: user) }
+    let!(:review_list) { FactoryGirl.create(:review_list, user: user) }
+
     it "should return all cards available to a review list" do
-      user = FactoryGirl.create(:user)
-      card = FactoryGirl.create(:card, user: user)
-      review_list = FactoryGirl.create(:review_list, user: user)
-      FactoryGirl.create(:review_list_card, card: card, review_list: review_list)
+      all_cards = ReviewList.all_cards(review_list, user)
+      expect(all_cards).to include(card)
+    end
+
+    it "should return only cards available to tags specified" do
+      tag = FactoryGirl.create(:tag, user: user)
+      card2 = FactoryGirl.create(:card, user: user)
+      FactoryGirl.create(:tagging, card: card, tag: tag)
+      review_list.tags << tag
 
       all_cards = ReviewList.all_cards(review_list, user)
       expect(all_cards).to include(card)
+      expect(all_cards).to_not include(card2)
+      expect(all_cards.count).to eql(1)
     end
   end
 

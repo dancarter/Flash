@@ -23,10 +23,15 @@ feature 'User reviews cards from collection', %q{
     it "starts a review session" do
       visit review_path
 
-      fill_in "Amount", with: '1'
-      click_on "Begin"
+      within "#all" do
+        fill_in "Amount", with: '1'
+        click_on "Begin"
+      end
 
       expect(page).to have_content(card.front)
+      click_on "Answer"
+      click_on "Next"
+      expect(page).to have_content('Review Complete!')
     end
   end
 
@@ -34,8 +39,10 @@ feature 'User reviews cards from collection', %q{
     it "gives an error if amount is more than collection size" do
       visit review_path
 
-      fill_in "Amount", with: '13'
-      click_on "Begin"
+      within "#all" do
+        fill_in "Amount", with: '13'
+        click_on "Begin"
+      end
 
       expect(page).to have_content("Amount can't be greater than available cards")
     end
@@ -43,8 +50,10 @@ feature 'User reviews cards from collection', %q{
     it "gives an error if amount is not a number" do
       visit review_path
 
-      fill_in "Amount", with: 'Hi!'
-      click_on "Begin"
+      within "#all" do
+        fill_in "Amount", with: 'Hi!'
+        click_on "Begin"
+      end
 
       expect(page).to have_content("Amount is not a number")
     end
@@ -52,8 +61,10 @@ feature 'User reviews cards from collection', %q{
     it "gives an error if amount is negative" do
       visit review_path
 
-      fill_in "Amount", with: '-10'
-      click_on "Begin"
+      within "#all" do
+        fill_in "Amount", with: '-10'
+        click_on "Begin"
+      end
 
       expect(page).to have_content("Amount must be greater than or equal to 1")
     end
@@ -61,8 +72,10 @@ feature 'User reviews cards from collection', %q{
     it "gives an error if amount is zero" do
       visit review_path
 
-      fill_in "Amount", with: '0'
-      click_on "Begin"
+      within "#all" do
+        fill_in "Amount", with: '0'
+        click_on "Begin"
+      end
 
       expect(page).to have_content("Amount must be greater than or equal to 1")
     end

@@ -103,7 +103,7 @@
     * Cards are randomly selected from each tag evenly
     * Cards are presented for review
 
-10.)
+✔.)
     As a registered user
     I want to study from all cards
     So that I can review my whole collection
@@ -126,7 +126,7 @@
     * Otherwise, a no tags found message is shown
     * I can click on a tag to see the cards it contains
 
-12.)
+✔.)
     As a registered user
     I want to copy a public tag
     So that I can study its cards
@@ -164,3 +164,4 @@ Future Features:
 3. Delete cards under this tag
 4. SRS Reviewing
 5. Cards with more than 2 sides
+6. User profile pictures
