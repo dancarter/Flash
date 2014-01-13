@@ -35,6 +35,7 @@ end
 gem 'devise'
 gem 'foundation-rails'
 gem 'ransack'
+gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'factory_girl_rails'
