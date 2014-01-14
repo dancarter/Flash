@@ -23,7 +23,7 @@ feature "User copies public tag", %q{
     it "should add the tag to the users collection" do
       visit share_path
       click_on tag.name
-      click_on "Add to Collection"
+      click_on "Add to My Collection"
 
       visit tags_path
       expect(page).to have_content(tag.name)
@@ -34,7 +34,7 @@ feature "User copies public tag", %q{
       FactoryGirl.create(:tagging, card: card, tag: tag)
       visit share_path
       click_on tag.name
-      click_on "Add to Collection"
+      click_on "Add to My Collection"
 
       visit cards_path
 
@@ -46,7 +46,7 @@ feature "User copies public tag", %q{
       FactoryGirl.create(:tagging, card: card, tag: tag)
       visit share_path
       click_on tag.name
-      click_on "Add to Collection"
+      click_on "Add to My Collection"
 
       visit tags_path
       click_on tag.name
