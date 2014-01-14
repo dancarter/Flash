@@ -158,6 +158,37 @@
     * When I click the button
     * The cards remain unchanged but are no longer related to the tag
 
+15.)
+    As a registered user
+    I want my review lists to be saved
+    So that I can finish reviewing later
+
+    Acceptance Criteria:
+    * When reviewing a list
+    * If I don't review the entire list, the list is saved for later
+    * I can see lists in progress on the review page
+    * After two days a review list is deleted
+
+16.)
+    As a registered user
+    I want to decide if I am done reviewing a card
+    So that I can leave it in a review list to review it more
+
+    Acceptance Criteria
+    * I can decide if I am done reviewing a card
+    * If I am done it is removed from the review list
+    * If I am done it is left on the list to be reviewed again
+
+17.)
+    As a registered user
+    I want to filter my card list by tag
+    So that I can find cards for specific tags quickly
+
+    Acceptance Criteria
+    * I can choose a tag when viewing my card list
+    * Cards not under that tag are filtered out
+    * If no tag is chosen, all cards are listed
+
 Future Features:
 1. Filter cards displayed
 2. Mass card deletion
