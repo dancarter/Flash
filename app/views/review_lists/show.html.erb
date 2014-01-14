@@ -3,7 +3,7 @@
   <%= "#{(@review_list.amount - @review_list.review_list_cards_count) + 1}/#{@review_list.amount}" %>
 
   <div class='flip-container'>
-    <dv class='creation'>
+    <div class='creation'>
       <div class='front'>
         <div class='cont panel'>
           <%= @card.front %>
@@ -21,21 +21,8 @@
           <%= link_to "Finish", review_list_path(@review_list) %>
         <% end %>
       </div>
-    </dv>
+    </div>
   </div>
 
+
 </div>
-
-<%= content_for :extra_footer do %>
-  <script type='text/javascript'>
-    $( document ).ready(function() {
-
-      $('body').on('click', '.flip-trigger', function(event) {
-        event.preventDefault();
-        $container = $(this).closest('.flip-container');
-        $container.toggleClass('flip-container--flipped');
-      });
-
-    });
-  </script>
-<% end %>

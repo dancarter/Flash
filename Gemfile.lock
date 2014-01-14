@@ -63,6 +63,7 @@ GEM
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
+    easy_flip (0.0.1)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
@@ -215,6 +216,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  easy_flip
   factory_girl_rails
   foundation-rails
   jbuilder (~> 1.2)

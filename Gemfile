@@ -38,6 +38,7 @@ gem 'foundation-rails'
 gem 'ransack'
 gem 'rails_12factor', group: :production
 gem 'sendgrid'
+gem 'easy_flip'
 
 group :test, :development do
   gem 'factory_girl_rails'

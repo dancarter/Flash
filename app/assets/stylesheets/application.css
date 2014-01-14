@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require foundation_and_overrides
+ *= require easy_flip
 
  *= require_tree .
  */
@@ -19,7 +20,8 @@
 }
 
 .scroll {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-left: 10px;
   height: 600px;
   width: 200px;
@@ -67,61 +69,4 @@
 
 .page-down {
   margin-top: 50px;
-}
-
-/* Flip Animation */
-.flip-container {
-  -webkit-perspective:1200;
-  -moz-perspective:1200;
-  perspective:1200;
-}
-.flip-container.flip-container--flipped .creation {
-  -webkit-transform:rotateY(180deg);
-  -moz-transform:rotateY(180deg);
-}
-.creation {
-  width:550px;
-  height:256px;
-  float:left;
-  -webkit-transition:all 0.6s;
-  -moz-transition:all 0.6s;
-  transition:all 0.6s;
-  -webkit-transform-style:preserve-3d;
-  -moz-transform-style:preserve-3d;
-  transform-style:preserve-3d;
-}
-.front, .back {
-  position:absolute;
-  top:0;
-  left:0;
-  -webkit-backface-visibility:hidden;
-  -moz-backface-visibility:hidden;
-  backface-visibility:hidden;
-}
-.back {
-  z-index:800;
-  -webkit-transform:rotateY(-180deg);
-  -moz-transform:rotateY(-180deg);
-  transform:rotateY(-180deg);
-}
-.creation p {
-  color:#666;
-  display:block;
-  width:auto;
-  text-align:center;
-  line-height:240px;
-  margin:0 30px;
-  font-size:22px;
-  text-transform:uppercase;
-  text-shadow:1px 1px 1px #999;
-  font-family:sans-serif;
-}
-
-.cont {
-  text-align: center;
-  background-color:#ddd;
-  width:550px;
-  height:240px;
-  display:inline-block;
-  border:8px solid #1abc9c;
 }
