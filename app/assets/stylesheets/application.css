@@ -13,7 +13,6 @@
 
  *= require_tree .
  */
-
 .main {
   left: -20px !important;
   width: 750px !important;
@@ -40,16 +39,7 @@
   z-index: 5000 !important;
 }
 
-.page-center {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 550px;
-}
-
-.page-down {
-  margin-top: 50px;
-}
-
+/* Forms */
 .options-div {
   position: relative;
   top: -15px;
@@ -57,6 +47,7 @@
   min-width: 550px;
 }
 
+/* Card list on cardi ndex page */
 .card-list-divider {
   margin-top: 0;
   width:200px;
@@ -65,6 +56,17 @@
 .card-filter {
   height: 35px;
   width: 150px;
+}
+
+/* Move page container */
+.page-center {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 550px;
+}
+
+.page-down {
+  margin-top: 50px;
 }
 
 /* Flip Animation */

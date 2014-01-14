@@ -31,6 +31,7 @@ class PagesController < ApplicationController
 
   def copy
     tag = Tag.find(params[:tag_id])
+    tag.share = false
     Copier.copy_tag_to(tag, current_user)
     redirect_to action: 'share', notice: "Tag successfully copied."
   end

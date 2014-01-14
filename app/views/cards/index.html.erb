@@ -5,11 +5,6 @@
       <li>
         <%= link_to "New Card", '/cards' %>
       </li>
-      <li>
-        <%= select_tag "tags", options_from_collection_for_select(current_user.tags, "id", "name"), :include_blank => true, class: 'card-filter' %>
-      </li>
-
-      <hr class="card-list-divider">
 
       <div class='scroll'>
         <% @cards.each do |card| %>
