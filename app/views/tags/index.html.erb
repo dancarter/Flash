@@ -6,7 +6,12 @@
 
       <div class='scroll'>
       <% @tags.each do |tag| %>
-        <li><%= link_to tag.name, tags_tag_path(tag) %></li>
+        <li>
+          <span class='secondary round label'>
+            <%= link_to "x", tag, :method => :delete, data: {confirm: "Delete?"} %>
+          </span>
+          <%= link_to tag.name, tags_tag_path(tag) %>
+        </li>
       <% end %>
       </div>
     </ul>
