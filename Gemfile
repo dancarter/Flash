@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
@@ -36,6 +37,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'ransack'
 gem 'rails_12factor', group: :production
+gem 'sendgrid'
 
 group :test, :development do
   gem 'factory_girl_rails'
