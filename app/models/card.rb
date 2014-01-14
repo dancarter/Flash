@@ -17,4 +17,5 @@ class Card < ActiveRecord::Base
   validates_presence_of :back
   validates_presence_of :user
 
+  paginates_per 20
 end

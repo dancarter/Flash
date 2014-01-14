@@ -39,6 +39,7 @@ gem 'ransack'
 gem 'rails_12factor', group: :production
 gem 'sendgrid'
 gem 'easy_flip'
+gem 'kaminari'
 
 group :test, :development do
   gem 'factory_girl_rails'

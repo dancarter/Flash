@@ -16,4 +16,5 @@ class Tag < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :user
 
+  paginates_per 10
 end

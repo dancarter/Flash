@@ -19,9 +19,9 @@ Flash::Application.routes.draw do
 
   get "/review", to: "pages#review", as: "review"
 
-  get "/share", to: "pages#share", as: "share"
+  get "/share/(:page)", to: "pages#share", as: "share"
 
-  get "/users/:id/:tag_id", to: "pages#sharetag", as: "share_tag"
+  get "/users/:id/:tag_id/(:page)", to: "pages#sharetag", as: "share_tag"
 
   post "/copy/:tag_id", to: "pages#copy", as: "copy"
 

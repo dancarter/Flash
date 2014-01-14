@@ -4,7 +4,7 @@
   <p><%= link_to @tag.user.username, user_path(@tag.user) %>
   <%= button_to "Add to My Collection", copy_path(@tag) %></p>
 
-  <% @tag.cards.each do |card| %>
+  <% @cards.each do |card| %>
     <div class="panel">
       <%= card.front %>
       <hr>
@@ -12,4 +12,5 @@
     </div>
   <% end %>
 
+  <%= paginate @cards %>
 </div>

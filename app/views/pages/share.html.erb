@@ -15,4 +15,6 @@
     <p>created by: <%= link_to tag.user.username, user_path(tag.user) %></p>
   <% end %>
 
+  <%= paginate @tags %>
+
 </div>

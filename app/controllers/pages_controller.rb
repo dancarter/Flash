@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
   def share
     @q = Tag.all.where( share: true ).search(params[:q])
-    @tags = @q.result(distinct: true)
+    @tags = @q.result(distinct: true).order(:name).page params[:page]
   end
 
   def search
@@ -27,6 +27,7 @@ class PagesController < ApplicationController
 
   def sharetag
     @tag = Tag.find(params[:tag_id])
+    @cards = @tag.cards.order(:front).page params[:page]
   end
 
   def copy
