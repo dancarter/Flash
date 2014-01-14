@@ -19,6 +19,10 @@
   width: 750px !important;
 }
 
+div.scroll li a {
+  display: inline-block;
+}
+
 .scroll {
   overflow-y: auto;
   overflow-x: hidden;

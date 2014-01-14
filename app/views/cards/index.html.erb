@@ -8,7 +8,12 @@
 
       <div class='scroll'>
         <% @cards.each do |card| %>
-          <li><%= link_to card.front, cards_card_path(card.id) %></li>
+          <li>
+            <span class='secondary radius label'>
+              <%= link_to "x", card, :method => :delete, data: {confirm: "Delete?"} %>
+            </span>
+            <%= link_to card.front, cards_card_path(card.id), class: 'card-link' %>
+          </li>
         <% end %>
       </div>
     </ul>
