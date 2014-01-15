@@ -33,9 +33,10 @@ feature "User filters cards by tag", %q{
   end
 
   context "User selects a tag" do
-    card2 = FactoryGirl.create(:card, user: user)
 
     it "should only show cards for that tag" do
+      card2 = FactoryGirl.create(:card, user: user)
+
       visit cards_path
 
       select tag1.name, from: Tags

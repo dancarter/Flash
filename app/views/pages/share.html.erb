@@ -12,8 +12,11 @@
   <h3>Results</h3>
   <% @tags.each do |tag| %>
     <h3><%= link_to tag.name, share_tag_path(tag.user, tag) %></h3>
-    <p>card count: <%= tag.cards.count %> <br />
-    created by: <%= link_to tag.user.username, user_path(tag.user) %></p>
+    <p>
+      card count: <%= tag.cards.count %>
+      created by: <%= link_to tag.user.username, user_path(tag.user) %><br />
+      share count: <%= tag.share_count %>
+    </p>
   <% end %>
 
   <%= paginate @tags %>

@@ -5,8 +5,8 @@ class Tagging < ActiveRecord::Base
     counter_cache: true,
     inverse_of: :taggings
 
-  validates_presence_of :tag_id
-  validates_presence_of :card_id
+  validates_presence_of :tag
+  validates_presence_of :card
 
   validates_uniqueness_of :card_id,
     scope: :tag_id

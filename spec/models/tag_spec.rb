@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Tag do
   it { should validate_presence_of :name }
   it { should validate_presence_of :user }
+  it { should validate_presence_of :share_count }
 
   it { should have_many(:taggings).dependent(:destroy) }
   it { should have_many(:review_list_tags).dependent(:destroy) }

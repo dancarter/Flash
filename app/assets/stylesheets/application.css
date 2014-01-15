@@ -34,7 +34,6 @@ div.scroll li a {
 
 .side {
   top: -20px;
-  left: -100px;
 }
 
 .alert-box {
@@ -45,6 +44,19 @@ div.scroll li a {
 
 .dropdown {
   z-index: 5000 !important;
+}
+
+/* Sidebar on tag and card index pages */
+.scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 10px;
+  height: 500px;
+  width: 200px;
+}
+
+.side {
+  top: -20px;
 }
 
 /* Forms */
