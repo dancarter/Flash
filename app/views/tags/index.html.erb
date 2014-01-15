@@ -1,29 +1,31 @@
-<p><div class="row">
-  <div class="small-2 columns side">
+<div class='page-down'>
+  <p><div class="row">
+    <div class="small-2 columns side">
 
-    <ul class="side-nav">
-      <li><%= link_to "New Tag", '/tags' %></li>
+      <ul class="side-nav">
+        <li><%= link_to "New Tag", '/tags' %></li>
 
-      <div class='scroll'>
-      <% @tags.each do |tag| %>
-        <li>
-          <span class='secondary round label'>
-            <%= link_to "x", tag, :method => :delete, data: {confirm: "Delete?"} %>
-          </span>
-          <%= link_to tag.name, tags_tag_path(tag) %>
-        </li>
-      <% end %>
-      </div>
-    </ul>
+        <div class='scroll'>
+        <% @tags.each do |tag| %>
+          <li>
+            <span class='secondary round label'>
+              <%= link_to "x", tag, :method => :delete, data: {confirm: "Delete?"} %>
+            </span>
+            <%= link_to tag.name, tags_tag_path(tag) %>
+          </li>
+        <% end %>
+        </div>
+      </ul>
 
-  </div>
-
-  <div class="small-10 columns main">
-
-    <div class='main'>
-      <% tag = @tag.nil? ? Tag.new : @tag %>
-      <%= render 'tags/form', tag: tag %>
     </div>
 
-  </div>
-</div></p>
+    <div class="small-10 columns main">
+
+      <div class='main'>
+        <% tag = @tag.nil? ? Tag.new : @tag %>
+        <%= render 'tags/form', tag: tag %>
+      </div>
+
+    </div>
+  </div></p>
+</div>

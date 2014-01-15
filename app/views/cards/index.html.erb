@@ -1,34 +1,36 @@
-<p><div class="row">
-  <div class="small-2 columns side">
+<div class='page-down'>
+  <p><div class="row">
+    <div class="small-2 columns side">
 
-    <ul class="side-nav">
-      <li>
-        <%= link_to "New Card", '/cards' %>
-      </li>
+      <ul class="side-nav">
+        <li>
+          <%= link_to "New Card", '/cards' %>
+        </li>
 
-      <div class='scroll'>
-        <% @cards.each do |card| %>
-          <li>
-            <span class='secondary round label'>
-              <%= link_to "x", card, :method => :delete, data: {confirm: "Delete?"} %>
-            </span>
-            <%= link_to card.front, cards_card_path(card.id), class: 'card-link' %>
-          </li>
-        <% end %>
-      </div>
-    </ul>
+        <div class='scroll'>
+          <% @cards.each do |card| %>
+            <li>
+              <span class='secondary round label'>
+                <%= link_to "x", card, :method => :delete, data: {confirm: "Delete?"} %>
+              </span>
+              <%= link_to card.front, cards_card_path(card.id), class: 'card-link' %>
+            </li>
+          <% end %>
+        </div>
+      </ul>
 
-  </div>
-
-  <div class="small-10 columns main">
-
-    <div class='main'>
-      <% card = @card.nil? ? Card.new : @card %>
-      <%= render 'cards/form', card: card %>
     </div>
 
-  </div>
-</div></p>
+    <div class="small-10 columns main">
+
+      <div class='main'>
+        <% card = @card.nil? ? Card.new : @card %>
+        <%= render 'cards/form', card: card %>
+      </div>
+
+    </div>
+  </div></p>
+</div>
 
 <%= content_for :extra_footer do %>
   <script type='text/javascript'>
