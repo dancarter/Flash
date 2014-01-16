@@ -45,4 +45,41 @@ describe ReviewList do
     end
   end
 
+  describe '.tags_list' do
+    it 'should return a list of all tags on a review list' do
+      user = FactoryGirl.create(:user)
+      card = FactoryGirl.create(:card, user: user)
+      review_list = FactoryGirl.create(:review_list, user: user)
+      tag1 = FactoryGirl.create(:tag, user: user)
+      tag2 = FactoryGirl.create(:tag, user: user)
+      FactoryGirl.create(:tagging, card: card, tag: tag1)
+      FactoryGirl.create(:tagging, card: card, tag: tag2)
+
+      review_list.cards << card
+      review_list.tags << tag1
+      review_list.tags << tag2
+
+      expect(review_list.tags_list).to eql("#{tag1.name}, #{tag2.name}")
+    end
+  end
+
+  describe '.next_card' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:card) { FactoryGirl.create(:card, user: user) }
+    let!(:review_list) { FactoryGirl.create(:review_list, user: user) }
+
+    before :each do
+      review_list.cards << card
+    end
+
+    it 'should return a card' do
+      expect(review_list.next_card).to be_a(Card)
+    end
+
+    it "should set last_card to returned card's id" do
+      card = review_list.next_card
+
+      expect(review_list.last_card).to eql(card.id)
+    end
+  end
 end

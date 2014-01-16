@@ -3,10 +3,13 @@ class ReviewListsController < AuthenticatedController
   def show
     @review_list = ReviewList.find(params[:id])
     if @review_list.review_list_cards.count > 0
-      review_list_card = @review_list.review_list_cards.shuffle.first
-      @card = review_list_card.card
-      review_list_card.destroy
-    else
+      if params[:repeat] == 'false'
+        review_list_card = @review_list.review_list_cards.where(card_id: @review_list.last_card)
+        review_list_card[0].destroy
+      end
+      @card = @review_list.next_card if @review_list.review_list_cards.count != 0
+    end
+    if @review_list.review_list_cards.count == 0
       @review_list.destroy
       redirect_to review_path, notice: "Review Complete!"
     end

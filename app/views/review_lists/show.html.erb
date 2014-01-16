@@ -1,7 +1,4 @@
 <div class="page-center page-down">
-
-  <%= "#{(@review_list.amount - @review_list.review_list_cards_count) + 1}/#{@review_list.amount}" %>
-
   <div class='flip-container'>
     <div class='creation'>
       <div class='front'>
@@ -15,11 +12,8 @@
         <div class='cont panel'>
           <%= simple_format(@card.back) %>
         </div>
-        <% if @review_list.review_list_cards_count > 1 %>
-          <%= link_to "Next", review_list_path(@review_list) %>
-        <% else %>
-          <%= link_to "Finish", review_list_path(@review_list) %>
-        <% end %>
+        <%= link_to "Complete", review_list_path(@review_list, repeat: 'false') %>
+        <%= link_to "Repeat", review_list_path(@review_list, repeat: 'true') %> <br />
       </div>
     </div>
   </div>

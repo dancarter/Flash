@@ -45,7 +45,15 @@ class ReviewList < ActiveRecord::Base
   end
 
   def tags_list
-    self.tags.collect {|tag| tag.name }.join(',')
+    self.tags.collect {|tag| tag.name }.join(', ')
+  end
+
+  def next_card
+    review_list_card = self.review_list_cards.shuffle.first
+    card = review_list_card.card
+    self.last_card = card.id
+    self.save!
+    card
   end
 
   def less_than_or_equal_to_available_cards
