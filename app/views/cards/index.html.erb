@@ -2,21 +2,18 @@
   <p><div class="row">
     <div class="small-2 columns side">
 
-      <ul class="side-nav">
-        <li>
-          <%= link_to "New Card", '/cards' %>
-        </li>
+      <%= link_to "New Card", '/cards' %>
 
-        <div class='scroll'>
-          <% @cards.each do |card| %>
-            <li>
-              <span class='secondary round label'>
-                <%= link_to "x", card, :method => :delete, data: {confirm: "Delete?"} %>
-              </span>
-              <%= link_to card.front, cards_card_path(card.id), class: 'card-link' %>
-            </li>
-          <% end %>
-        </div>
+      <ul class="side-nav side-nav-tags">
+        <% @cards.each do |card| %>
+          <li>
+            <span class='secondary round label index-card tag-delete'>
+              <%= link_to "x", card, :method => :delete, data: {confirm: "Delete?"} %>
+            </span>
+            <%= link_to truncate(card.front, length: 19, omission: ''), cards_card_path(card.id),
+              class: 'card-link' %>
+          </li>
+        <% end %>
       </ul>
 
     </div>

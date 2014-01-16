@@ -1,0 +1,165 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require foundation_and_overrides
+ *= require easy_flip
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.alert-box {
+  width: 100%;
+  position: absolute;
+  z-index: 4999;
+}
+
+.cont {
+  word-break:break-all;
+}
+
+/*--------
+Navbar
+--------*/
+
+.top-bar {
+  box-shadow: 1px 1px 1px 1px #888888;
+}
+.top-bar ul.title-area li.name h1 a{
+  font-family: 'Emblema One', cursive;
+}
+
+.dropdown {
+  z-index: 5000;
+}
+
+/*--------
+Home page for logged in users
+--------*/
+.review-lists {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-lists table {
+  width: 100%;
+}
+
+.home-side-bar-left table, .home-side-bar-right table {
+  width: 100%;
+}
+
+.home-page-bars-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 550px;
+  padding-top: 50px;
+  margin: 0 auto -90px;
+}
+
+/*--------
+  Welcome page for new users
+--------*/
+.header-wrap {
+  background: url('https://s3-us-west-2.amazonaws.com/flash-app/header-img.jpg') no-repeat top center;
+  height: 500px;
+  margin-bottom: 75px;
+}
+
+.header-log-in, .header-text {
+  opacity: 0;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+}
+
+.header-log-in {
+  max-width: 20%;
+}
+
+.header-text {
+  margin-right: 56%;
+  max-width: 1%;
+  padding-top: 10%;
+  font-size: 300%;
+  color: white;
+  font-family: 'Emblema One', cursive;
+  text-shadow: 2px 2px #000000;
+}
+
+.welcome-content {
+  text-align: center;
+}
+
+/*--------
+Sidebar on tag and card index pages
+--------*/
+.side {
+  position: relative;
+  float: left;
+}
+
+.side-nav-tags {
+  li {
+    overflow: hidden;
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .tag-delete {
+    position: absolute;
+    left: 0;
+  }
+}
+
+/*--------
+Forms
+--------*/
+.options-div {
+  position: relative;
+  top: -15px;
+  min-height: 300px;
+  min-width: 550px;
+}
+
+/*--------
+Card list on card index page
+--------*/
+.card-list-divider {
+  margin-top: 0;
+  width: auto;
+}
+
+.card-filter {
+  height: 35px;
+  width: 150px;
+}
+
+/*--------
+Move page container
+--------*/
+.page-center {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 550px;
+  margin-top: 25px;
+}
+
+.page-down {
+  margin-top: 50px;
+}

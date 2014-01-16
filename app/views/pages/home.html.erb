@@ -1,0 +1,66 @@
+<div class='row page-down'>
+  <div class='home-side-bar-left small-3 columns'>
+    <h4>Popular Tags</h4>
+    <table>
+      <tbody>
+        <% @popular_tags.each do |tag| %>
+          <tr>
+            <td>
+              <%= link_to tag.name, share_tag_path(tag.user, tag) %>
+            </td>
+            <td>
+              <%= pluralize(tag.share_count, 'shares') %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='review-lists small-6 columns'>
+    <h4>Reviews in Progress</h4>
+    <table>
+      <tbody>
+        <% current_user.review_lists.each do |review_list| %>
+          <tr>
+            <td>
+              Tags:
+              <% if review_list.tags.size > 0 %>
+                <%= review_list.tags_list %>
+              <% else %>
+                None
+              <% end %>
+            </td>
+            <td>
+              Cards remaining: <%= review_list.cards.count %>
+            </td>
+            <td>
+              <%= link_to 'Continue', review_list_path(review_list) %>
+            </td>
+          </tr>
+        <% end %>
+        <% if current_user.review_lists.count == 0 %>
+          <td>None</td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='home-side-bar-right small-3 columns'>
+    <h4>Recent Tags</h4>
+    <table>
+      <tbody>
+        <% @recent_tags.each do |tag| %>
+          <tr>
+            <td>
+              <%= link_to tag.name, share_tag_path(tag.user, tag) %>
+            </td>
+            <td>
+              <%= pluralize(tag.cards.count, 'card') %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

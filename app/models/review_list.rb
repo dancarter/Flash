@@ -25,22 +25,27 @@ class ReviewList < ActiveRecord::Base
   validate :less_than_or_equal_to_available_cards,
     on: :create
 
+  class << self
+    def set_cards(review_list, user)
+      review_list.cards = ReviewList.all_cards(review_list, user).sample(review_list.amount)
+    end
 
-  def self.set_cards(review_list, user)
-    review_list.cards = ReviewList.all_cards(review_list, user).sample(review_list.amount)
+    def all_cards(review_list, user)
+      all_cards = []
+      tags = review_list.tags
+      if tags.size > 0
+        tags.each do |tag|
+          all_cards << tag.cards
+        end
+      else
+        all_cards = user.cards
+      end
+      all_cards.flatten
+    end
   end
 
-  def self.all_cards(review_list, user)
-    all_cards = []
-    tags = review_list.tags
-    if tags.size > 0
-      tags.each do |tag|
-        all_cards << tag.cards
-      end
-    else
-      all_cards = user.cards
-    end
-    all_cards.flatten
+  def tags_list
+    self.tags.collect {|tag| tag.name }.join(',')
   end
 
   def less_than_or_equal_to_available_cards

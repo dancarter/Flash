@@ -1,4 +1,4 @@
-<div class="page-center">
+<div class="page-center page-down">
 
   <%= "#{(@review_list.amount - @review_list.review_list_cards_count) + 1}/#{@review_list.amount}" %>
 
@@ -6,14 +6,14 @@
     <div class='creation'>
       <div class='front'>
         <div class='cont panel'>
-          <%= @card.front %>
+          <%= simple_format(@card.front) %>
         </div>
         <a href='' class='flip-trigger'>Answer</a>
       </div>
 
       <div class='back'>
         <div class='cont panel'>
-          <%= @card.back %>
+          <%= simple_format(@card.back) %>
         </div>
         <% if @review_list.review_list_cards_count > 1 %>
           <%= link_to "Next", review_list_path(@review_list) %>

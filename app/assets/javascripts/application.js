@@ -18,7 +18,9 @@
 $(function(){ $(document).foundation();
 
   $(window).load(function(){
-    setTimeout(function(){ $('.alert-box').fadeOut() }, 2500);
+    setTimeout(function(){ $('.alert-box').fadeOut() }, 2000);
+    $(".header-text").delay(1000).animate({ opacity: 1 }, 700);
+    setTimeout(function(){ $(".header-log-in").delay(1000).animate({ opacity: 1 }, 700) }, 1000);
   });
 
 });

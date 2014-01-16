@@ -2,19 +2,18 @@
   <p><div class="row">
     <div class="small-2 columns side">
 
-      <ul class="side-nav">
-        <li><%= link_to "New Tag", '/tags' %></li>
+      <%= link_to "New Tag", '/tags' %>
 
-        <div class='scroll'>
+      <ul class="side-nav side-nav-tags">
         <% @tags.each do |tag| %>
           <li>
-            <span class='secondary round label'>
+            <span class='secondary round label index-card tag-delete'>
               <%= link_to "x", tag, :method => :delete, data: {confirm: "Delete?"} %>
             </span>
-            <%= link_to tag.name, tags_tag_path(tag) %>
+            <%= link_to truncate(tag.name, length: 19, omission: ''), tags_tag_path(tag.id),
+              class: 'tag-link' %>
           </li>
         <% end %>
-        </div>
       </ul>
 
     </div>

@@ -7,6 +7,7 @@ class ReviewListsController < AuthenticatedController
       @card = review_list_card.card
       review_list_card.destroy
     else
+      @review_list.destroy
       redirect_to review_path, notice: "Review Complete!"
     end
   end

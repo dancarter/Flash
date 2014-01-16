@@ -4,8 +4,8 @@ class PagesController < ApplicationController
     if !user_signed_in?
      render :action => 'welcome'
     else
-      @cards = current_user.cards
-      @tags = current_user.tags
+      @popular_tags = Tag.where(share: true).order('share_count DESC').limit(10)
+      @recent_tags = Tag.where(share: true).order('created_at DESC').limit(10)
     end
   end
 
