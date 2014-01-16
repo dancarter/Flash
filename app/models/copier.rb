@@ -4,6 +4,7 @@ class Copier
     tag_dup = tag.dup
     tag_dup.taggings_count = 0
     tag_dup.share = false
+    tag_dup.share_count = 0
     user.tags << tag_dup
     copy_cards_for_tag(tag, tag_dup)
     tag_dup

@@ -7,7 +7,7 @@
       <ul class="side-nav side-nav-tags">
         <% @tags.each do |tag| %>
           <li>
-            <span class='secondary round label index-card tag-delete'>
+            <span class='tag-delete'>
               <%= link_to "x", tag, :method => :delete, data: {confirm: "Delete?"} %>
             </span>
             <%= link_to truncate(tag.name, length: 19, omission: ''), tags_tag_path(tag.id),
