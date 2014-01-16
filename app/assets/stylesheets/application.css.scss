@@ -21,12 +21,18 @@ html, body {
   padding: 0;
 }
 
+/*--------
+Flash alerts
+--------*/
 .alert-box {
   width: 100%;
   position: absolute;
   z-index: 4999;
 }
 
+/*--------
+Card content when reviewing
+--------*/
 .cont {
   word-break:break-all;
   overflow-y: auto;
