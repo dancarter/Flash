@@ -158,7 +158,7 @@
     * When I click the button
     * The cards remain unchanged but are no longer related to the tag
 
-15.)
+✔.)
     As a registered user
     I want my review lists to be saved
     So that I can finish reviewing later
@@ -190,9 +190,8 @@
     * If no tag is chosen, all cards are listed
 
 Future Features:
-1. Filter cards displayed
-2. Mass card deletion
-3. Delete cards under this tag
-4. SRS Reviewing
-5. Cards with more than 2 sides
-6. User profile pictures
+1. Mass card deletion
+2. Delete cards under this tag
+3. SRS Reviewing
+4. Cards with more than 2 sides
+5. User profile pictures

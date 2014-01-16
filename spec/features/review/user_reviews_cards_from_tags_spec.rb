@@ -38,7 +38,7 @@ feature "User reviews cards from tags", %q{
       expect(page).to have_content(card1.back)
       expect(page).to_not have_content(card2.front)
       expect(page).to_not have_content(card2.back)
-      click_on "Finish"
+      click_on "Complete"
       expect(page).to have_content('Review Complete!')
     end
   end

@@ -13,9 +13,9 @@
   <% @tags.each do |tag| %>
     <h3><%= link_to tag.name, share_tag_path(tag.user, tag) %></h3>
     <p>
-      <%= pluralize(tag.cards.count, 'card') %>
-      created by: <%= link_to tag.user.username, user_path(tag.user) %><br />
-      shared <%= pluralize( tag.share_count, 'time' ) %>
+      <div class='card-count'><%= pluralize(tag.cards.count, 'card') %></div>
+      <div class='created-by'>created by: <%= link_to tag.user.username, user_path(tag.user) %></div>
+      <br />shared <%= pluralize( tag.share_count, 'time' ) %>
     </p>
   <% end %>
 

@@ -150,13 +150,15 @@ Sidebar on tag and card index pages
 }
 
 /*--------
-Forms
+Review Form
 --------*/
 .options-div {
   position: relative;
   top: -15px;
-  min-height: 300px;
-  min-width: 550px;
+  height: 500%;
+  width: 500%;
+  max-height: 500px;
+  max-width: 550px;
 }
 
 /*--------
@@ -184,4 +186,15 @@ Move page container
 
 .page-down {
   margin-top: 50px;
+}
+
+/*--------
+Share page
+--------*/
+.created-by {
+  float: right;
+}
+
+.card-count {
+  float: left;
 }
