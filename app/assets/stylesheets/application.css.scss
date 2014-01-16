@@ -115,7 +115,8 @@ Sidebar on tag and card index pages
 }
 
 .side-nav-tags {
-  overflow-y: scroll;
+  overflow-y: auto;
+  max-height: 450px;
   li {
     overflow: hidden;
     position: relative;
