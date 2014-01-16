@@ -29,6 +29,12 @@ html, body {
 
 .cont {
   word-break:break-all;
+  overflow-y: auto;
+}
+
+.cont img {
+  max-height: 200px;
+  max-width: 200px;
 }
 
 /*--------
