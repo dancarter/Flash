@@ -3,7 +3,7 @@ class ReviewListsController < AuthenticatedController
   def show
     @review_list = ReviewList.find(params[:id])
     if @review_list.review_list_cards.count > 0
-      if params[:repeat] == 'false'
+      if params[:repeat] == 'false' && !params[:repeat].nil?
         review_list_card = @review_list.review_list_cards.where(card_id: @review_list.last_card)
         review_list_card[0].destroy
       end
