@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/tannerburson/tworgy-spaced-repetition
+  revision: 188132de6e6dd969b5e4439bebbe0ce43847bdeb
+  specs:
+    tworgy-spaced-repetition (0.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -244,6 +250,7 @@ DEPENDENCIES
   shoulda-matchers
   spring
   turbolinks
+  tworgy-spaced-repetition!
   uglifier (>= 1.3.0)
   valid_attribute
   validates_email_format_of

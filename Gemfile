@@ -40,7 +40,8 @@ gem 'rails_12factor', group: :production
 gem 'sendgrid'
 gem 'easy_flip'
 gem 'kaminari'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'tworgy-spaced-repetition', git: 'https://github.com/tannerburson/tworgy-spaced-repetition'
 
 group :test, :development do
   gem 'factory_girl_rails'
