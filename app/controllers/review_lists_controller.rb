@@ -2,13 +2,24 @@ class ReviewListsController < AuthenticatedController
 
   def show
     @review_list = ReviewList.find(params[:id])
-    if @review_list.review_list_cards.count > 0
-      if params[:repeat] == 'false' && !params[:repeat].nil?
-        review_list_card = @review_list.review_list_cards.where(card_id: @review_list.last_card)
-        review_list_card[0].destroy
+    if @review_list.srs_review?
+      if @review_list.review_list_cards.count > 0 && !params[:recall].nil?
+        review_list_card = @review_list.review_list_cards.where(card_id: @review_list.last_card)[0]
+        review_list_card.card.process_recall_result(params[:recall].to_i)
+        review_list_card.card.save!
+        if params[:recall].to_i > 2
+          review_list_card.destroy
+        end
       end
-      @card = @review_list.next_card if @review_list.review_list_cards.count != 0
+    else
+      if @review_list.review_list_cards.count > 0
+        if params[:repeat] == 'false' && !params[:repeat].nil?
+          review_list_card = @review_list.review_list_cards.where(card_id: @review_list.last_card)
+          review_list_card[0].destroy
+        end
+      end
     end
+    @card = @review_list.next_card if @review_list.review_list_cards.count != 0
     if @review_list.review_list_cards.count == 0
       @review_list.destroy
       redirect_to review_path, notice: "Review Complete!"
@@ -33,7 +44,7 @@ class ReviewListsController < AuthenticatedController
   private
 
   def review_list_params
-    params.require(:review_list).permit(:amount, :tag_ids => [])
+    params.require(:review_list).permit(:amount, :srs_review, :new_count, :tag_ids => [])
   end
 
 end

@@ -12,8 +12,16 @@
         <div class='cont panel'>
           <%= simple_format(@card.back) %>
         </div>
-        <%= link_to "Complete", review_list_path(@review_list, repeat: 'false') %>
-        <%= link_to "Repeat", review_list_path(@review_list, repeat: 'true') %> <br />
+        <% if @review_list.srs_review? %>
+          <%= link_to "Again", review_list_path(@review_list, recall: '1') %>
+          <%= link_to "Hard", review_list_path(@review_list, recall: '2') %>
+          <%= link_to "Fair", review_list_path(@review_list, recall: '4') %>
+          <%= link_to "Good", review_list_path(@review_list, recall: '5') %>
+          <%= link_to "Easy", review_list_path(@review_list, recall: '6') %>
+        <% else %>
+          <%= link_to "Complete", review_list_path(@review_list, repeat: 'false') %>
+          <%= link_to "Repeat", review_list_path(@review_list, repeat: 'true') %> <br />
+        <% end %>
       </div>
     </div>
   </div>

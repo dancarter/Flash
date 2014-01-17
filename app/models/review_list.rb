@@ -36,7 +36,7 @@ class ReviewList < ActiveRecord::Base
     end
 
     def set_srs_cards(review_list, all_cards)
-      not_yet_reviewed = all_cards.collect { |card| card.last_studied == nil }
+      not_yet_reviewed = all_cards.select { |card| card.last_studied == nil }
       if not_yet_reviewed.count > review_list.new_count
         review_list.cards << not_yet_reviewed.sample(review_list.new_count)
         new_count = review_list.new_count
@@ -44,7 +44,7 @@ class ReviewList < ActiveRecord::Base
         review_list.cards << not_yet_reviewed
         new_count = not_yet_reviewed.count
       end
-      up_for_review = all_cards.collect { |card| card.scheduled_to_recall? }
+      up_for_review = all_cards.select { |card| card.scheduled_to_recall? && card.last_studied != Date.today }
       if up_for_review.count > ( review_list.amount - new_count )
         review_list.cards << up_for_review.sample( review_list.amount - new_count )
       else

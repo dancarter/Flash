@@ -1,4 +1,6 @@
 class Card < ActiveRecord::Base
+  include SuperMemo::SM2
+
   has_many :taggings,
     inverse_of: :card,
     dependent: :destroy
