@@ -27,7 +27,29 @@ class ReviewList < ActiveRecord::Base
 
   class << self
     def set_cards(review_list, user)
-      review_list.cards = ReviewList.all_cards(review_list, user).sample(review_list.amount)
+      all_cards = ReviewList.all_cards(review_list, user)
+      if review_list.srs_review?
+        set_srs_cards(review_list, all_cards)
+      else
+        review_list.cards << all_cards.sample(review_list.amount)
+      end
+    end
+
+    def set_srs_cards(review_list, all_cards)
+      not_yet_reviewed = all_cards.collect { |card| card.last_studied == nil }
+      if not_yet_reviewed.count > review_list.new_count
+        review_list.cards << not_yet_reviewed.sample(review_list.new_count)
+        new_count = review_list.new_count
+      else
+        review_list.cards << not_yet_reviewed
+        new_count = not_yet_reviewed.count
+      end
+      up_for_review = all_cards.collect { |card| card.scheduled_to_recall? }
+      if up_for_review.count > ( review_list.amount - new_count )
+        review_list.cards << up_for_review.sample( review_list.amount - new_count )
+      else
+        review_list.cards << up_for_review
+      end
     end
 
     def all_cards(review_list, user)
