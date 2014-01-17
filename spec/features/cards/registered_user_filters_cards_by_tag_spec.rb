@@ -39,7 +39,7 @@ feature "User filters cards by tag", %q{
 
       visit cards_path
 
-      select tag1.name, from: Tags
+      select tag.name, from: Tags
 
       expect(page).to have_content(card1.front)
       expect(page).to_not have_content(card2.front)

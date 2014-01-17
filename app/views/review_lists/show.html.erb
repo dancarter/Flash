@@ -33,10 +33,10 @@
         <% else %>
           <div class='row'>
             <div class="small-6 columns">
-              <%= link_to "(D)one", review_list_path(@review_list, repeat: 'false') %>
+              <%= link_to "Done", review_list_path(@review_list, repeat: 'false') %>
             </div>
             <div class="small-6 columns card-again">
-              <%= link_to "(A)gain", review_list_path(@review_list, repeat: 'true') %>
+              <%= link_to "Again", review_list_path(@review_list, repeat: 'true') %>
             </div>
           </div>
         <% end %>
