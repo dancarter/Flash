@@ -78,7 +78,7 @@
             <% end %>
             <div class="field panel">
               <%= f.label :max_amount_of_cards %><br>
-              <%= f.text_field :amount, placeholder: "Max cards to review" %>
+              <%= f.text_field :max, placeholder: "Max cards to review" %>
             </div>
             <div class="field panel">
               <%= f.label :amount_of_new_cards %><br>
@@ -89,6 +89,7 @@
               <%= f.collection_select :tag_ids, current_user.tags, :id, :name, {}, { multiple: true } %>
             </div>
             <%= f.hidden_field :srs_review, :value => true%>
+            <%= f.hidden_field :amount, :value => 1%>
             <div class="actions">
               <%= f.submit "Begin" %>
             </div>

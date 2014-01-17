@@ -190,8 +190,9 @@
     * If no tag is chosen, all cards are listed
 
 Future Features:
-1. Mass card deletion
-2. Delete cards under this tag
-3. SRS Reviewing
-4. Cards with more than 2 sides
-5. User profile pictures
+1. Easier card deletion
+2. Import CSV/Excel sheets
+3. Delete cards under this tag
+4. SRS Reviewing
+5. Cards with more than 2 sides
+6. User profile pictures
