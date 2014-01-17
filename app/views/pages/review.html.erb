@@ -6,6 +6,7 @@
     <dl class="tabs" data-tab>
       <dd class="active"><a href="#all">All Cards</a></dd>
       <dd><a href="#tags">By Tags</a></dd>
+      <dd><a href="#srs">SRS</a></dd>
     </dl>
 
     <div class="tabs-content">
@@ -59,6 +60,40 @@
               <%= f.submit "Begin" %>
             </div>
           <% end %>
+        </div>
+      </div>
+
+       <div class="content" id="srs">
+        <div class='panel options-div'>
+          <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
+          <%= form_for(review_list) do |f| %>
+            <% if review_list.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                <% review_list.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="field panel">
+              <%= f.label :max_amount_of_cards %><br>
+              <%= f.text_field :amount, placeholder: "Max cards to review" %>
+            </div>
+            <div class="field panel">
+              <%= f.label :amount_of_new_cards %><br>
+              <%= f.text_field :amount, placeholder: "New cards to review" %>
+            </div>
+            <div class="select panel">
+              <%= f.label :tags %><br>
+              <%= f.collection_select :tag_ids, current_user.tags, :id, :name, {}, { multiple: true } %>
+            </div>
+            <%= f.hidden_field :srs_review, :value => true%>
+            <div class="actions">
+              <%= f.submit "Begin" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
