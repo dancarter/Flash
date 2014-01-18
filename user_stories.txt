@@ -189,6 +189,16 @@
     * Cards not under that tag are filtered out
     * If no tag is chosen, all cards are listed
 
+18.)
+    As a registered user
+    I want to import cards from a file
+    So that I can easily add new cards
+
+    Acceptance Criteria
+    * I can choose a file to import from
+    * If the file is valid, the cards are added to my collection
+    * If the cards are invalid, I get an error
+
 Future Features:
 1. Easier card deletion
 2. Import CSV/Excel sheets
