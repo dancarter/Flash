@@ -41,6 +41,8 @@ gem 'sendgrid'
 gem 'easy_flip'
 gem 'kaminari'
 gem 'font-awesome-rails'
+gem 'iconv'
+gem 'roo'
 gem 'tworgy-spaced-repetition', git: 'https://github.com/tannerburson/tworgy-spaced-repetition'
 
 group :test, :development do

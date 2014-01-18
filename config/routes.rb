@@ -2,6 +2,7 @@ Flash::Application.routes.draw do
   devise_for :users
 
   resources :cards, except: [:show]
+  resources :card_imports, only: [:new,:create]
   resources :tags, except: [:show]
   resources :users, only: [:show]
   resources :review_lists, only: [:show, :new, :create]
