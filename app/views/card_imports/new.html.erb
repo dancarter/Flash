@@ -4,15 +4,21 @@
   <p>Cards can be uploaded from a CSV file. The file's first row should be the headers. The following headers are allowed.</p>
 
   <ul>
-    <% Card.columns.each do |column| %>
-      <% if column.name.in? ['front','back'] %>
-        <li>
-          <strong><%= column.name %></strong> -
-          <%= column.type.to_s.titleize %> type
-        </li>
-      <% end %>
-    <% end %>
+    <li>
+      <strong>front</strong> -
+      Text on front of card
+    </li>
+    <li>
+      <strong>back</strong> -
+      Text on back of cards
+    </li>
+    <li>
+      <strong>tags</strong> -
+      Tags for card seperated by spaces
+    </li>
   </ul>
+
+  <p>If a specified tag does not exist, it will be created.</p>
 
   <%= form_for @card_import do |f| %>
     <% if @card_import.errors.any? %>

@@ -49,6 +49,14 @@ class CardImport
         card = Card.new
         card.attributes = row.to_hash.slice('front','back')
         card.user = user
+        if !row.to_hash['tags'].nil?
+          tags = row.to_hash.slice('tags')['tags'].split(' ')
+          tags.each do |tag_name|
+            tag = Tag.find_or_create_by(name: tag_name, user: user)
+            tag.user = user
+            tag.cards << card
+          end
+        end
         card
       end
     end

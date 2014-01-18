@@ -26,6 +26,18 @@ feature "Registered user imports cards from a file", %q{
 
       expect(page).to have_content("Imported cards successfully")
     end
+
+    it "should add cards to associated tags if tags are included" do
+      visit new_card_import_path
+
+      attach_file('card_import_file', Rails.root.join('spec/files/valid-tags.csv'))
+      click_on 'Import'
+
+      expect(page).to have_content("Imported cards successfully")
+      visit cards_path
+      click_on 'Valid Tags'
+      expect(find_field('card_tag_ids').find('option[selected]').text).to eql("Tag")
+    end
   end
 
   context "user imports cards from an invalid file" do
