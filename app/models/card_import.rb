@@ -44,15 +44,13 @@ class CardImport
       spreadsheet
     else
       header = spreadsheet.row(1)
-      (2..spreadsheet.last_row).map { |i|
+      (2..spreadsheet.last_row).map do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
-        card = Card.find_by_id(row["id"]) || Card.new
-        if card.user.nil? || card.user == user
-          card.attributes = row.to_hash.slice('front','back')
-          card.user = user
-          card
-        end
-      }.reject { |card| card.nil? }
+        card = Card.new
+        card.attributes = row.to_hash.slice('front','back')
+        card.user = user
+        card
+      end
     end
   end
 

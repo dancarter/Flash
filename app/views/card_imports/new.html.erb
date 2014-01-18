@@ -1,34 +1,34 @@
-<h1>Card Import</h1>
+<div class='page-down page-center'>
+  <h1>Card Import</h1>
 
-<p>Cards can be uploaded from a CSV file. The file's first row should be the headers. The following headers are allowed.</p>
+  <p>Cards can be uploaded from a CSV file. The file's first row should be the headers. The following headers are allowed.</p>
 
-<ul>
-  <% Card.columns.each do |column| %>
-    <% if column.name.in? ["id", 'front','back'] %>
-      <li>
-        <strong><%= column.name %></strong> -
-        <%= column.type.to_s.titleize %> type
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-
-<p>If the <strong>id</strong> is supplied, the card with the matching id will be updated instead of creating a new one.</p>
-
-<%= form_for @card_import do |f| %>
-  <% if @card_import.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@card_import.errors.count, "error") %> prohibited this import from completing:</h2>
-      <ul>
-      <% @card_import.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <ul>
+    <% Card.columns.each do |column| %>
+      <% if column.name.in? ['front','back'] %>
+        <li>
+          <strong><%= column.name %></strong> -
+          <%= column.type.to_s.titleize %> type
+        </li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% end %>
+  </ul>
 
-  <div class="field">
-    <%= f.file_field :file %>
-  </div>
-  <div class="buttons"><%= f.submit "Import" %></div>
-<% end %>
+  <%= form_for @card_import do |f| %>
+    <% if @card_import.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@card_import.errors.count, "error") %> prohibited this import from completing:</h2>
+        <ul>
+        <% @card_import.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.file_field :file %>
+    </div>
+    <div class="buttons"><%= f.submit "Import" %></div>
+  <% end %>
+</div>
