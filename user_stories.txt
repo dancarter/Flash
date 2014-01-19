@@ -189,7 +189,7 @@
     * Cards not under that tag are filtered out
     * If no tag is chosen, all cards are listed
 
-18.)
+✔.)
     As a registered user
     I want to import cards from a file
     So that I can easily add new cards
@@ -201,8 +201,6 @@
 
 Future Features:
 1. Easier card deletion
-2. Import CSV/Excel sheets
-3. Delete cards under this tag
-4. SRS Reviewing
-5. Cards with more than 2 sides
-6. User profile pictures
+2. Delete cards under this tag
+3. Cards with more than 2 sides
+4. User profile pictures
