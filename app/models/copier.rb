@@ -13,6 +13,7 @@ class Copier
   def self.copy_cards_for_tag(old_tag, new_tag)
     old_tag.cards.each do |card|
       duplicate = card.dup
+      duplicate.reset_spaced_repetition_data
       new_tag.user.cards << duplicate
       new_tag.cards << duplicate
     end
