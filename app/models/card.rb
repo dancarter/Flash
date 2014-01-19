@@ -20,4 +20,17 @@ class Card < ActiveRecord::Base
   validates_presence_of :user
 
   paginates_per 20
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << ['front','back','tags']
+      all.each do |card|
+        attributes = card.attributes.values_at(*['front','back'])
+        tags = card.tags.collect { |tag| tag.name }
+        tags = tags.join(' ')
+        attributes << tags
+        csv << attributes
+      end
+    end
+  end
 end

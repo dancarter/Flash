@@ -3,6 +3,10 @@ class CardsController < AuthenticatedController
   def index
     @cards = current_user.cards
     @card = Card.find(params[:card_id]) unless params[:card_id].nil?
+    respond_to do |format|
+      format.html
+      format.csv { render text: @cards.to_csv }
+    end
   end
 
   def new

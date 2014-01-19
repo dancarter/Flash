@@ -18,4 +18,15 @@ class Tag < ActiveRecord::Base
   validates_presence_of :share_count
 
   paginates_per 10
+
+  def to_csv
+    CSV.generate do |csv|
+      csv << ['front','back','tags']
+      self.cards.each do |card|
+        attributes = card.attributes.values_at(*['front','back'])
+        attributes << self.name
+        csv << attributes
+      end
+    end
+  end
 end

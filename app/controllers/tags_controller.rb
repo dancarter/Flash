@@ -3,6 +3,10 @@ class TagsController < AuthenticatedController
   def index
     @tags = current_user.tags
     @tag = Tag.find(params[:tag_id]) unless params[:tag_id].nil?
+    respond_to do |format|
+      format.html
+      format.csv { render text: @tag.to_csv }
+    end
   end
 
   def new

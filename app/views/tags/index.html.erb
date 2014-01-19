@@ -2,6 +2,7 @@
   <p><div class="row">
     <div class="small-2 columns side">
 
+      <%= link_to_if(!@tag.nil?, "Export", "/tags/#{@tag.id if !@tag.nil?}.csv") %><br />
       <%= link_to "New Tag", '/tags' %>
 
       <ul class="side-nav side-nav-tags">
