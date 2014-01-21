@@ -7,7 +7,8 @@
       <%= link_to "New Card", '/cards' %>
       <%= search_form_for @search, url: search_cards_path,
                         html: { method: :post } do |f| %>
-        <%= f.select :tags_id_not_eq, current_user.tags.collect{|c| [c.name, c.id]}, {include_blank: true} %>
+        <%= f.select :tags_id_eq, current_user.tags.collect{|c| [c.name, c.id]}, {include_blank: true} %>
+        <%= f.submit "Filter" %>
       <% end %>
 
       <ul class="side-nav side-nav-tags">

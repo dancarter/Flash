@@ -3,7 +3,7 @@ Flash::Application.routes.draw do
 
   resources :cards, except: [:show] do
     collection do
-      match 'search' => 'card#search', via: [:get, :post], as: :search
+      match 'search' => 'cards#index', via: [:get, :post], as: :search
     end
   end
   resources :card_imports, only: [:new,:create]
