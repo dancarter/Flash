@@ -1,7 +1,11 @@
 Flash::Application.routes.draw do
   devise_for :users
 
-  resources :cards, except: [:show]
+  resources :cards, except: [:show] do
+    collection do
+      match 'search' => 'card#search', via: [:get, :post], as: :search
+    end
+  end
   resources :card_imports, only: [:new,:create]
   resources :tags, except: [:show]
   resources :users, only: [:show]

@@ -1,12 +1,20 @@
 class CardsController < AuthenticatedController
 
   def index
-    @cards = current_user.cards
+    # @cards = current_user.cards
+    @search = Card.search(params[:search])
+    @cards = @search.result(distinct: true)
     @card = Card.find(params[:card_id]) unless params[:card_id].nil?
     respond_to do |format|
       format.html
       format.csv { render text: @cards.to_csv }
     end
+  end
+
+  def search
+    index
+    puts @cards
+    render :index
   end
 
   def new
