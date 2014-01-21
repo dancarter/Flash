@@ -38,7 +38,7 @@ feature "User filters cards by tag", %q{
       card2 = FactoryGirl.create(:card, user: user)
 
       visit cards_path
-      save_and_open_page
+
       select tag.name, from: 'q_tags_id_eq'
       click_on 'Filter'
 

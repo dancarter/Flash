@@ -1,7 +1,6 @@
 class CardsController < AuthenticatedController
 
   def index
-    # @cards = current_user.cards
     @search = current_user.cards.search(params[:q])
     @cards = @search.result(distinct: true)
     @card = Card.find(params[:card_id]) unless params[:card_id].nil?
@@ -24,11 +23,18 @@ class CardsController < AuthenticatedController
     if @card.save
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
       @card.save!
-      filter = {}
-      filter[:tags_id_eq] = eval(params[:card][:q])[:q]["tags_id_eq"]
-      redirect_to cards_path(q: filter), notice: 'Card was successfully created.'
+      tag = eval(params[:card][:q])[:q]
+      if tag
+        filter = {}
+        filter[:tags_id_eq] = tag["tags_id_eq"]
+        redirect_to cards_path(q: filter), notice: 'Card was successfully created.'
+      else
+        redirect_to cards_path, notice: 'Card was successfully created.'
+      end
     else
-      @cards = current_user.cards - [@card]
+      @card.user = nil
+      @search = current_user.cards.search(params[:q])
+      @cards = @search.result(distinct: true)
       render :index
     end
   end
@@ -38,11 +44,17 @@ class CardsController < AuthenticatedController
 
     if @card.update(card_params)
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
-      filter = {}
-      filter[:tags_id_eq] = eval(params[:card][:q])[:q]["tags_id_eq"]
-      redirect_to cards_path(q: filter), notice: 'Card was successfully updated.'
+      tag = eval(params[:card][:q])[:q]
+      if tag
+        filter = {}
+        filter[:tags_id_eq] = tag["tags_id_eq"]
+        redirect_to cards_path(q: filter), notice: 'Card was successfully updated.'
+      else
+        redirect_to cards_path, notice: 'Card was successfully updated.'
+      end
     else
-      @cards = current_user.cards
+      @search = current_user.cards.search(params[:q])
+      @cards = @search.result(distinct: true)
       render :index
     end
   end
