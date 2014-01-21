@@ -39,7 +39,8 @@ feature "User filters cards by tag", %q{
 
       visit cards_path
 
-      select tag.name, from: Tags
+      select tag.name, from: 'q_tags_id_eq'
+      click_on 'Filter'
 
       expect(page).to have_content(card1.front)
       expect(page).to_not have_content(card2.front)

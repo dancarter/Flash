@@ -23,4 +23,8 @@ $(function(){ $(document).foundation();
     setTimeout(function(){ $(".header-log-in").delay(1000).animate({ opacity: 1 }, 700) }, 1000);
   });
 
+  $('#q_tags_id_eq').on("change", function(){
+    $('.filter').click()
+  })
+
 });

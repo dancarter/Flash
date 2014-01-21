@@ -23,11 +23,12 @@
     <%= f.label :tags %><br>
     <%= f.collection_select :tag_ids, current_user.tags, :id, :name, {}, { multiple: true } %>
   </div>
+  <%= f.hidden_field :q, {:value => {:q => params[:q]}} %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 
-<% if !card.front.nil? %>
-  <%= button_to "Delete", card, :method => :delete %>
+<% if !card.front.nil? && card.front != '' && card.back != '' %>
+  <%= button_to "Delete", card_path(card,q: params[:q]), :method => :delete %>
 <% end %>

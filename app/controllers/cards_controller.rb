@@ -1,7 +1,8 @@
 class CardsController < AuthenticatedController
 
   def index
-    @cards = current_user.cards
+    @search = current_user.cards.search(params[:q])
+    @cards = @search.result(distinct: true)
     @card = Card.find(params[:card_id]) unless params[:card_id].nil?
     respond_to do |format|
       format.html
@@ -22,9 +23,18 @@ class CardsController < AuthenticatedController
     if @card.save
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
       @card.save!
-      redirect_to cards_path, notice: 'Card was successfully created.'
+      tag = eval(params[:card][:q])[:q]
+      if tag
+        filter = {}
+        filter[:tags_id_eq] = tag["tags_id_eq"]
+        redirect_to cards_path(q: filter), notice: 'Card was successfully created.'
+      else
+        redirect_to cards_path, notice: 'Card was successfully created.'
+      end
     else
-      @cards = current_user.cards - [@card]
+      @card.user = nil
+      @search = current_user.cards.search(params[:q])
+      @cards = @search.result(distinct: true)
       render :index
     end
   end
@@ -34,16 +44,24 @@ class CardsController < AuthenticatedController
 
     if @card.update(card_params)
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
-      redirect_to cards_path, notice: 'Card was successfully updated.'
+      tag = eval(params[:card][:q])[:q]
+      if tag
+        filter = {}
+        filter[:tags_id_eq] = tag["tags_id_eq"]
+        redirect_to cards_path(q: filter), notice: 'Card was successfully updated.'
+      else
+        redirect_to cards_path, notice: 'Card was successfully updated.'
+      end
     else
-      @cards = current_user.cards
+      @search = current_user.cards.search(params[:q])
+      @cards = @search.result(distinct: true)
       render :index
     end
   end
 
   def destroy
     current_user.cards.find(params[:id]).destroy
-    redirect_to cards_path, notice: 'Card was successfully deleted.'
+    redirect_to cards_path(q: params[:q]), notice: 'Card was successfully deleted.'
   end
 
   private
