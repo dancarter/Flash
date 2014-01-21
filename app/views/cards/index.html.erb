@@ -4,20 +4,21 @@
 
       <%= link_to "Import", new_card_import_path %> |
       <%= link_to "Export", '/cards.csv' %><br />
-      <%= link_to "New Card", '/cards' %>
+      <%= link_to "New Card", cards_path(q: params[:q]) %>
       <%= search_form_for @search, url: search_cards_path,
                         html: { method: :post } do |f| %>
-        <%= f.select :tags_id_eq, current_user.tags.collect{|c| [c.name, c.id]}, {include_blank: true} %>
-        <%= f.submit "Filter" %>
+        <%= f.select :tags_id_eq, current_user.tags.collect{|c| [c.name, c.id]},{include_blank: true} %>
+        <%= f.submit "Filter", class: 'hidden filter'%>
       <% end %>
 
       <ul class="side-nav side-nav-tags">
         <% @cards.each do |card| %>
           <li>
             <span class='tag-delete'>
-              <%= link_to "x", card, :method => :delete, data: {confirm: "Delete?"} %>
+              <%= link_to "x", card_path(card,q: params[:q]), :method => :delete, data: {confirm: "Delete?"} %>
             </span>
-            <%= link_to truncate(card.front, length: 19, omission: ''), cards_card_path(card.id),
+            <%= link_to truncate(card.front, length: 19, omission: ''),
+                        cards_card_path(card.id, q: params[:q]),
               class: 'card-link' %>
           </li>
         <% end %>
@@ -35,11 +36,3 @@
     </div>
   </div></p>
 </div>
-
-<%= content_for :extra_footer do %>
-  <script type='text/javascript'>
-      $('body').on('click', '.card-filter', function(event) {
-        event.preventDefault();
-      });
-  </script>
-<% end %>

@@ -24,7 +24,9 @@ class CardsController < AuthenticatedController
     if @card.save
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
       @card.save!
-      redirect_to cards_path, notice: 'Card was successfully created.'
+      filter = {}
+      filter[:tags_id_eq] = eval(params[:card][:q])[:q]["tags_id_eq"]
+      redirect_to cards_path(q: filter), notice: 'Card was successfully created.'
     else
       @cards = current_user.cards - [@card]
       render :index
@@ -36,7 +38,9 @@ class CardsController < AuthenticatedController
 
     if @card.update(card_params)
       @card.tags = params[:card][:tag_ids].reject!{|x| x== ''}.map{|x| Tag.find(x.to_i)}
-      redirect_to cards_path, notice: 'Card was successfully updated.'
+      filter = {}
+      filter[:tags_id_eq] = eval(params[:card][:q])[:q]["tags_id_eq"]
+      redirect_to cards_path(q: filter), notice: 'Card was successfully updated.'
     else
       @cards = current_user.cards
       render :index
@@ -45,7 +49,7 @@ class CardsController < AuthenticatedController
 
   def destroy
     current_user.cards.find(params[:id]).destroy
-    redirect_to cards_path, notice: 'Card was successfully deleted.'
+    redirect_to cards_path(q: params[:q]), notice: 'Card was successfully deleted.'
   end
 
   private
