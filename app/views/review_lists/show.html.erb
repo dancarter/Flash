@@ -21,22 +21,22 @@
               <%= link_to "Hard", review_list_path(@review_list, recall: '2') %>
             </div>
             <div class='small-2 columns recall-3'>
-              <%= link_to "Fair", review_list_path(@review_list, recall: '4') %>
+              <%= link_to "Fair", review_list_path(@review_list, recall: '3') %>
             </div>
             <div class='small-3 columns recall-4'>
-              <%= link_to "Good", review_list_path(@review_list, recall: '5') %>
+              <%= link_to "Good", review_list_path(@review_list, recall: '4') %>
             </div>
             <div class='small-2 columns recall-5'>
-              <%= link_to "Easy", review_list_path(@review_list, recall: '6') %>
+              <%= link_to "Easy", review_list_path(@review_list, recall: '5') %>
             </div>
           </div>
         <% else %>
           <div class='row'>
             <div class="small-6 columns">
-              <%= link_to "Done", review_list_path(@review_list, repeat: 'false') %>
+              <%= link_to "Done", review_list_path(@review_list, repeat: 'false'), class: "small button" %>
             </div>
             <div class="small-6 columns card-again">
-              <%= link_to "Again", review_list_path(@review_list, repeat: 'true') %>
+              <%= link_to "Again", review_list_path(@review_list, repeat: 'true'), class: "small button" %>
             </div>
           </div>
         <% end %>

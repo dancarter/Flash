@@ -1,6 +1,6 @@
 <div class='page-down'>
   <p><div class="row">
-    <div class="small-2 columns side">
+    <div class="large-2 columns side">
 
       <%= link_to "Import", new_card_import_path %> |
       <%= link_to "Export", '/cards.csv' %><br />
@@ -26,7 +26,7 @@
 
     </div>
 
-    <div class="small-10 columns main">
+    <div class="large-10 columns main">
 
       <div class='main'>
         <% card = @card.nil? ? Card.new : @card %>

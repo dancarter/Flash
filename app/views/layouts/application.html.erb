@@ -27,12 +27,15 @@
 
   <body>
     <div class='wrapper'>
+      <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
       <%= render 'layouts/navbar' %>
 
       <% flash.each do |name, msg| %>
         <div data-alert class="alert-box">
           <%= msg %>
-          <a href="#" class="close">&times;</a></div>
+          <a href="#" class="close">&times;</a>
+        </div>
       <% end %>
 
       <%= yield %>

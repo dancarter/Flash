@@ -7,5 +7,12 @@
     <p><%= link_to tag.name, share_tag_path(tag.user, tag) %></p>
   <% end %>
 
+  <h4>Statistics</h4>
+
+  <h5>Quality of Recall</h5>
+  <%= column_chart @user.cards.where("quality_of_last_recall IS NOT NULL").group("quality_of_last_recall").count %>
+
+  <h5>Average Quality of Recall Per Tag</h5>
+  <%= column_chart @user.tags.inject({}) { |hash, tag| hash[tag.name] = tag.avg_quality;hash } %>
 
 </div>
