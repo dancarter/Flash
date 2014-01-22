@@ -19,6 +19,19 @@ class Tag < ActiveRecord::Base
 
   paginates_per 10
 
+  def avg_quality
+    quality = 0
+    count = 0
+    self.cards.each do |card|
+      if card.quality_of_last_recall
+        quality += card.quality_of_last_recall
+        count += 1
+      end
+    end
+    return quality / count if count > 0
+    0
+  end
+
   def to_csv
     CSV.generate do |csv|
       csv << ['front','back','tags']
