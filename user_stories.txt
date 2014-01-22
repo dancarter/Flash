@@ -179,7 +179,7 @@
     * If I am done it is removed from the review list
     * If I am done it is left on the list to be reviewed again
 
-17.)
+✔.)
     As a registered user
     I want to filter my card list by tag
     So that I can find cards for specific tags quickly

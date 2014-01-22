@@ -31,12 +31,20 @@ Flash alerts
 .alert-box {
   width: 100%;
   position: absolute;
-  z-index: 4999;
+  z-index: 4000;
 }
 
 /*--------
 Card content when reviewing
 --------*/
+@media screen and (max-width:550px) {
+  .creation, .cont {
+    width: 300px;
+    float: none !important;
+    margin: 0 auto;
+  }
+}
+
 .cont {
   word-break:break-all;
   overflow-y: auto;
@@ -69,7 +77,7 @@ Card content when reviewing
 
 .srs-card-options {
   text-align: center;
-  font-size: 115%
+  font-size: 115%;
 }
 
 .card-again {
@@ -158,6 +166,12 @@ Sidebar on tag and card index pages
 .side {
   position: relative;
   float: left;
+}
+
+@media screen and (max-width:550px) {
+  .side-nav-tags {
+    max-height: 180px !important;
+  }
 }
 
 .side-nav-tags {
