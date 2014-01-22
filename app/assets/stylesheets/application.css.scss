@@ -37,6 +37,14 @@ Flash alerts
 /*--------
 Card content when reviewing
 --------*/
+@media screen and (max-width:550px) {
+  .creation, .cont {
+    width: 300px;
+    float: none !important;
+    margin: 0 auto;
+  }
+}
+
 .cont {
   word-break:break-all;
   overflow-y: auto;
@@ -158,6 +166,12 @@ Sidebar on tag and card index pages
 .side {
   position: relative;
   float: left;
+}
+
+@media screen and (max-width:550px) {
+  .side-nav-tags {
+    max-height: 180px !important;
+  }
 }
 
 .side-nav-tags {
