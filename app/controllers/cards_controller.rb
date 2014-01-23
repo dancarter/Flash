@@ -3,7 +3,9 @@ class CardsController < AuthenticatedController
   def index
     @search = current_user.cards.search(params[:q])
     @cards = @search.result(distinct: true)
-    @card = Card.find(params[:card_id]) unless params[:card_id].nil?
+    unless params[:card_id].nil? || Card.find(params[:card_id]).user != current_user
+      @card = Card.find(params[:card_id])
+    end
     respond_to do |format|
       format.html
       format.csv { render text: @cards.to_csv }

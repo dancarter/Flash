@@ -45,7 +45,6 @@ gem 'iconv'
 gem 'roo'
 gem 'chartkick'
 gem 'groupdate'
-gem 'active_median'
 gem 'tworgy-spaced-repetition', git: 'https://github.com/tannerburson/tworgy-spaced-repetition'
 
 group :test, :development do
