@@ -11,9 +11,7 @@
 
     <ul class="right">
       <li>
-        <%= if user_signed_in?
-          link_to 'Logout', destroy_user_session_path, method: :delete
-        else
+        <%= if !user_signed_in?
           link_to "Login", new_user_session_path
         end %>
       </li>
@@ -24,6 +22,7 @@
           <ul class="dropdown">
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Update", edit_user_registration_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>
       <% else %>
