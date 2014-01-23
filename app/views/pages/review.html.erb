@@ -3,14 +3,14 @@
   <h3>Review</h3>
 
   <div class='form'>
-    <dl class="tabs" data-tab>
+    <dl class="tabs row" data-tab>
       <dd class="active"><a href="#all">All Cards</a></dd>
       <dd><a href="#tags">By Tags</a></dd>
       <dd><a href="#srs">SRS</a></dd>
     </dl>
 
-    <div class="tabs-content">
-      <div class="content active" id="all">
+    <div class="tabs-content row">
+      <div class="content active large-12 small-12 columns" id="all">
         <div class='panel options-div'>
           <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
           <%= form_for(review_list) do |f| %>
