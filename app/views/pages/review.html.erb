@@ -10,7 +10,7 @@
     </dl>
 
     <div class="tabs-content row">
-      <div class="content active large-12 small-12 columns" id="all">
+      <div class="content active small-12 columns" id="all">
         <div class='panel options-div'>
           <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
           <%= form_for(review_list) do |f| %>
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="content" id="tags">
+      <div class="content small-12 columns" id="tags">
         <div class='panel options-div'>
           <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
           <%= form_for(review_list) do |f| %>
@@ -63,7 +63,7 @@
         </div>
       </div>
 
-       <div class="content" id="srs">
+       <div class="content small-12 columns" id="srs">
         <div class='panel options-div'>
           <% review_list = @review_list.nil? ? ReviewList.new : @review_list %>
           <%= form_for(review_list) do |f| %>
