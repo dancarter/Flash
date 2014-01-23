@@ -27,7 +27,7 @@ class Card < ActiveRecord::Base
       all.each do |card|
         attributes = card.attributes.values_at(*['front','back'])
         tags = card.tags.collect { |tag| tag.name }
-        tags = tags.join(' ')
+        tags = tags.join(';')
         attributes << tags
         csv << attributes
       end
