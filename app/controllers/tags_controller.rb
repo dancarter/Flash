@@ -2,7 +2,9 @@ class TagsController < AuthenticatedController
 
   def index
     @tags = current_user.tags
-    @tag = Tag.find(params[:tag_id]) unless params[:tag_id].nil?
+    unless params[:tag_id].nil? || Tag.find(params[:tag_id]).user != current_user
+      @tag = Tag.find(params[:tag_id]) unless params[:tag_id].nil?
+    end
     respond_to do |format|
       format.html
       format.csv { render text: @tag.to_csv }
