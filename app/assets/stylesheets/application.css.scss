@@ -103,8 +103,11 @@ Navbar
 /*--------
 Home page for logged in users
 --------*/
-.review-lists {
+.review-lists, .home-side-bar-left, .home-side-bar-right {
   text-align: center;
+}
+
+.review-lists {
   margin-left: auto;
   margin-right: auto;
 }
@@ -128,6 +131,11 @@ Home page for logged in users
 /*--------
   Welcome page for new users
 --------*/
+@media screen and (max-width:1000px) {
+  .header-wrap {
+    max-height: 375px;
+  }
+}
 .header-wrap {
   background: url('https://s3-us-west-2.amazonaws.com/flash-app/header-img.jpg') no-repeat top center;
   height: 500px;
@@ -144,13 +152,14 @@ Home page for logged in users
 
 .header-log-in {
   max-width: 20%;
+  min-width: 200px;
 }
 
 .header-text {
-  margin-right: 56%;
-  max-width: 1%;
   padding-top: 10%;
   font-size: 300%;
+  text-align: center;
+  margin: 0 auto;
   color: white;
   font-family: 'Emblema One', cursive;
   text-shadow: 2px 2px #000000;
@@ -204,9 +213,8 @@ Form
   position: relative;
   top: -15px;
   height: 500%;
-  width: 500%;
   max-height: 650px;
-  max-width: 550px;
+  width: 550px;
 }
 
 /*--------
