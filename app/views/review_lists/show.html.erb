@@ -5,7 +5,7 @@
         <div class='cont panel'>
           <%= simple_format(@card.front) %>
         </div>
-        <a href='' class='flip-trigger'>Answer</a>
+        <a href='' class='flip-trigger'>(F)lip</a>
       </div>
 
       <div class='back'>
@@ -15,28 +15,28 @@
         <% if @review_list.srs_review? %>
           <div class='srs-card-options row'>
             <div class='small-2 columns recall-1'>
-              <%= link_to "Again", review_list_path(@review_list, recall: '1') %>
+              <%= link_to "Again(1)", review_list_path(@review_list, recall: '1'), class: 'one' %>
             </div>
             <div class='small-3 columns recall-2'>
-              <%= link_to "Hard", review_list_path(@review_list, recall: '2') %>
+              <%= link_to "Hard(2)", review_list_path(@review_list, recall: '2'), class: 'two' %>
             </div>
             <div class='small-2 columns recall-3'>
-              <%= link_to "Fair", review_list_path(@review_list, recall: '3') %>
+              <%= link_to "Fair(3)", review_list_path(@review_list, recall: '3'), class: 'three' %>
             </div>
             <div class='small-3 columns recall-4'>
-              <%= link_to "Good", review_list_path(@review_list, recall: '4') %>
+              <%= link_to "Good(4)", review_list_path(@review_list, recall: '4'), class: 'four' %>
             </div>
             <div class='small-2 columns recall-5'>
-              <%= link_to "Easy", review_list_path(@review_list, recall: '5') %>
+              <%= link_to "Easy(5)", review_list_path(@review_list, recall: '5'), class: 'five' %>
             </div>
           </div>
         <% else %>
           <div class='row'>
             <div class="small-6 columns">
-              <%= link_to "Done", review_list_path(@review_list, repeat: 'false') %>
+              <%= link_to "(D)one", review_list_path(@review_list, repeat: 'false'), class: 'done' %>
             </div>
             <div class="small-6 columns card-again">
-              <%= link_to "Again", review_list_path(@review_list, repeat: 'true') %>
+              <%= link_to "(A)gain", review_list_path(@review_list, repeat: 'true'), class: 'again' %>
             </div>
           </div>
         <% end %>
@@ -44,3 +44,87 @@
     </div>
   </div>
 </div>
+
+<%= content_for :extra_footer do %>
+  <script>
+    $(function(){
+
+      window.Bindings = Keys.Bindings;
+      window.Combo    = Keys.Combo;
+      window.Key      = Keys.Key;
+
+      window.bindings = new Bindings();
+
+      bindings.add('flipCard', new Combo(Key.F));
+      bindings.add('done', new Combo(Key.D));
+      bindings.add('again', new Combo(Key.A));
+      bindings.add('qualityOne', new Combo(Key.fromName('1')));
+      bindings.add('qualityTwo', new Combo(Key.fromName('2')));
+      bindings.add('qualityThree', new Combo(Key.fromName('3')));
+      bindings.add('qualityFour', new Combo(Key.fromName('4')));
+      bindings.add('qualityFive', new Combo(Key.fromName('5')));
+
+      bindings.registerHandler(flipCard);
+      bindings.registerHandler(done);
+      bindings.registerHandler(again);
+      bindings.registerHandler(qualityOne);
+      bindings.registerHandler(qualityTwo);
+      bindings.registerHandler(qualityThree);
+      bindings.registerHandler(qualityFour);
+      bindings.registerHandler(qualityFive);
+
+      function flipCard() {
+        $( '.flip-container' ).toggleClass( 'flip-container-flipped');
+      }
+
+      function done() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.done' ).attr('href');
+        }
+      }
+
+      function again() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.again' ).attr('href');
+        }
+      }
+
+      function qualityOne() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.one' ).attr('href');
+        }
+      }
+
+      function qualityTwo() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.two' ).attr('href');
+        }
+      }
+
+      function qualityThree() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.three' ).attr('href');
+        }
+      }
+
+      function qualityFour() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.four' ).attr('href');
+        }
+      }
+
+      function qualityFive() {
+        var $flipContainer = $( '.flip-container' );
+        if ( $flipContainer.hasClass('flip-container-flipped') ) {
+          window.location = $( '.five' ).attr('href');
+        }
+      }
+    });
+  </script>
+<% end %>

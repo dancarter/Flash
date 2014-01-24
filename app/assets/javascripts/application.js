@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require keys
 //= require easy_flip
 
 $(function(){ $(document).foundation();
