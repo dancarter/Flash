@@ -39,9 +39,11 @@ class ReviewList < ActiveRecord::Base
     if !self.new_count.nil? && not_yet_reviewed.count > self.new_count
       self.cards << not_yet_reviewed.sample(self.new_count)
       new_added_count = self.new_count
-    else
+    elsif !self.new_count.nil?
       self.cards << not_yet_reviewed
       new_added_count = not_yet_reviewed.count
+    else
+      new_added_count = 0
     end
     up_for_review = all_cards.select { |card| card.scheduled_to_recall? && card.last_studied != Date.today }
     if !self.max.nil? && up_for_review.count > ( self.max - new_added_count )
