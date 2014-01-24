@@ -56,22 +56,28 @@
       window.bindings = new Bindings();
 
       bindings.add('flipCard', new Combo(Key.F));
-      bindings.add('done', new Combo(Key.D));
-      bindings.add('again', new Combo(Key.A));
-      bindings.add('qualityOne', new Combo(Key.fromName('1')));
-      bindings.add('qualityTwo', new Combo(Key.fromName('2')));
-      bindings.add('qualityThree', new Combo(Key.fromName('3')));
-      bindings.add('qualityFour', new Combo(Key.fromName('4')));
-      bindings.add('qualityFive', new Combo(Key.fromName('5')));
+      if ( $('.done').length ) {
+        bindings.add('done', new Combo(Key.D));
+        bindings.add('again', new Combo(Key.A));
+        bindings.registerHandler(done);
+        bindings.registerHandler(again);
+      }
+      else {
+        bindings.add('qualityOne', new Combo(Key.fromName('1')));
+        bindings.add('qualityTwo', new Combo(Key.fromName('2')));
+        bindings.add('qualityThree', new Combo(Key.fromName('3')));
+        bindings.add('qualityFour', new Combo(Key.fromName('4')));
+        bindings.add('qualityFive', new Combo(Key.fromName('5')));
+        bindings.registerHandler(qualityOne);
+        bindings.registerHandler(qualityTwo);
+        bindings.registerHandler(qualityThree);
+        bindings.registerHandler(qualityFour);
+        bindings.registerHandler(qualityFive);
+      }
 
       bindings.registerHandler(flipCard);
-      bindings.registerHandler(done);
-      bindings.registerHandler(again);
-      bindings.registerHandler(qualityOne);
-      bindings.registerHandler(qualityTwo);
-      bindings.registerHandler(qualityThree);
-      bindings.registerHandler(qualityFour);
-      bindings.registerHandler(qualityFive);
+
+
 
       function flipCard() {
         $( '.flip-container' ).toggleClass( 'flip-container-flipped');
