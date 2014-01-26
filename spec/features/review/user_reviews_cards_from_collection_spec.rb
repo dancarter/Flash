@@ -30,7 +30,7 @@ feature 'User reviews cards from collection', %q{
 
       expect(page).to have_content(card.front)
       expect(page).to have_content(card.back)
-      click_on "Done"
+      click_on "(D)one"
       expect(page).to have_content('Review Complete!')
     end
   end
