@@ -30,7 +30,12 @@ class ReviewList < ActiveRecord::Base
     if self.srs_review?
       self.set_srs_cards(all_cards)
     else
-      self.cards << all_cards.sample(self.amount)
+      if self.due_after
+        due_after = all_cards.reject { |card| card.last_studied.nil? || card.last_studied < self.due_after }
+        self.cards << due_after.sample(self.amount)
+      else
+        self.cards << all_cards.sample(self.amount)
+      end
     end
   end
 

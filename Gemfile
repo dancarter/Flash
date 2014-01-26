@@ -45,6 +45,7 @@ gem 'iconv'
 gem 'roo'
 gem 'chartkick'
 gem 'groupdate'
+gem 'pickadate-rails'
 gem 'tworgy-spaced-repetition', git: 'https://github.com/tannerburson/tworgy-spaced-repetition'
 
 group :test, :development do

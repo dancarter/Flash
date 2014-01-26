@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117181656) do
+ActiveRecord::Schema.define(version: 20140126181140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140117181656) do
     t.boolean  "srs_review",              default: false
     t.integer  "new_count"
     t.integer  "max"
+    t.date     "due_after"
   end
 
   add_index "review_lists", ["review_list_cards_count"], name: "index_review_lists_on_review_list_cards_count", using: :btree

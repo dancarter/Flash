@@ -23,10 +23,13 @@
                 </ul>
               </div>
             <% end %>
-
             <div class="field panel">
               <%= f.label :amount %><br>
               <%= f.text_field :amount, placeholder: "Amount of cards to review" %>
+            </div>
+            <div class="field panel">
+              <%= f.label :cards_due_after %><br>
+              <%= f.text_field :due_after, placeholder: "Choose date", class: 'datepicker' %>
             </div>
             <div class="actions">
               <%= f.submit "Begin" %>
@@ -55,6 +58,10 @@
             <div class="field panel">
               <%= f.label :amount %><br>
               <%= f.text_field :amount, placeholder: "Amount of cards to review" %>
+            </div>
+            <div class="field panel">
+              <%= f.label :cards_due_after %><br>
+              <%= f.text_field :due_after, placeholder: "Choose date", class: 'datepicker' %>
             </div>
             <div class="actions">
               <%= f.submit "Begin" %>
@@ -99,3 +106,11 @@
     </div>
   </div>
 </div>
+
+<%= content_for :extra_footer do %>
+  <script>
+    $(function(){
+      $('.datepicker').pickadate()
+    });
+  </script>
+<% end %>

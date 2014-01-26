@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require keys
+//= require pickadate/picker
+//= require pickadate/picker.date
 //= require easy_flip
 
 $(function(){ $(document).foundation();

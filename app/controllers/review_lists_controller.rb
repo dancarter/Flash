@@ -5,6 +5,9 @@ class ReviewListsController < AuthenticatedController
     if @review_list.last_card == nil && @review_list.cards.size == 0 && @review_list.srs_review?
       redirect_to review_path, notice: "No valid cards for SRS review!"
       @review_list.destroy
+    elsif @review_list.last_card == nil && @review_list.cards.size == 0
+      redirect_to review_path, notice: "No cards due after that date!"
+      @review_list.destroy
     else
       @card, redirect = @review_list.review(params[:repeat],params[:recall])
       if redirect
@@ -31,7 +34,7 @@ class ReviewListsController < AuthenticatedController
   private
 
   def review_list_params
-    params.require(:review_list).permit(:amount, :srs_review, :new_count, :max, :tag_ids => [])
+    params.require(:review_list).permit(:amount, :srs_review, :new_count, :max, :due_after, :tag_ids => [])
   end
 
 end
