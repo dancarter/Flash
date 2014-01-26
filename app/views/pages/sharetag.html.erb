@@ -6,9 +6,9 @@
 
   <% @cards.each do |card| %>
     <div class="panel">
-      <%= card.front %>
+      <%= simple_format(card.front) %>
       <hr>
-      <%= card.back %>
+      <%= simple_format(card.back) %>
     </div>
   <% end %>
 
