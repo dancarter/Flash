@@ -68,14 +68,19 @@
 
   <div class='row stats'>
     <h4>Statistics</h4>
-    <div class='home-side-bar-left large-6 columns'>
+    <div class='home-side-bar-left large-4 columns'>
       <h5>Quality of Recall</h5>
       <%= column_chart current_user.cards.where("quality_of_last_recall IS NOT NULL").group("quality_of_last_recall").count %>
     </div>
 
-    <div class='home-side-bar-right large-6 columns'>
+    <div class='review-lists large-4 columns'>
       <h5>Average Quality of Recall Per Tag</h5>
       <%= column_chart current_user.tags.inject({}) { |hash, tag| hash[tag.name] = tag.avg_quality;hash } %>
+    </div>
+
+    <div class='home-side-bar-right large-4 columns'>
+      <h5>Reviews Due in the Future</h5>
+      <%= column_chart current_user.cards.group_by_day(:next_repetition).count %>
     </div>
   </div>
 </div>
