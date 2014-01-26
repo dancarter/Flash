@@ -27,10 +27,11 @@ html, body {
   display: none
 }
 
-.stats {
-  text-align: center;
+.tabs .active {
+  border-top: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
 }
-
 /*--------
 Flash alerts
 --------*/
@@ -99,7 +100,7 @@ Navbar
 }
 
 .top-bar ul.title-area li.name h1 a{
-  font-family: 'Emblema One', cursive;
+  font-family: 'Revalia', cursive;
 }
 
 .dropdown {
@@ -132,6 +133,10 @@ Home page for logged in users
   max-width: 550px;
   padding-top: 50px;
   margin: 0 auto -90px;
+}
+
+.stats {
+  text-align: center;
 }
 
 /*--------
@@ -167,7 +172,7 @@ Home page for logged in users
   text-align: center;
   margin: 0 auto;
   color: white;
-  font-family: 'Emblema One', cursive;
+  font-family: 'Revalia', cursive;
   text-shadow: 2px 2px #000000;
 }
 
