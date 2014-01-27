@@ -38,7 +38,7 @@ Flash alerts
 .alert-box {
   width: 100%;
   position: absolute;
-  z-index: 4000;
+  z-index: 4000 !important;
 }
 
 /*--------
@@ -104,7 +104,7 @@ Navbar
 }
 
 .dropdown {
-  z-index: 5000;
+  z-index: 5000 !important;
 }
 
 /*--------
